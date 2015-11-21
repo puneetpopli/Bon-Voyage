@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.hangout.amigos.controller.Controller;
+
 
 /**
  * 
@@ -18,6 +20,6 @@ import org.springframework.context.annotation.Configuration;
 public class GooglePlacesApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GooglePlacesApplication.class, args);
+        SpringApplication.run(Controller.class, args);
     }
 }
