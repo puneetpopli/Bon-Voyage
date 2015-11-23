@@ -9,7 +9,11 @@ import org.springframework.web.client.RestTemplate;
 import com.hangout.amigos.dto.NearByPlaceResult;
 import com.hangout.amigos.dto.NearByPlaceWithAnyType;
 import com.hangout.amigos.dto.NearByRestaurant;
+import com.hangout.amigos.dto.ParticularPlaceDetail;
 import com.hangout.amigos.dto.Place;
+import com.hangout.amigos.dto.PlaceDetail;
+import com.hangout.amigos.dto.PlaceDetailResult;
+import com.hangout.amigos.dto.PlaceTextSearch;
 import com.hangout.amigos.dto.Result;
 import com.hangout.amigos.intf.GooglePlaceIntf;
 
@@ -30,6 +34,8 @@ public class GooglePlaceImpl implements GooglePlaceIntf{
 	private static final String NEARBY_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
 
 	private static final String DETAIL_URL = "https://maps.googleapis.com/maps/api/place/details/json";
+
+	private static final String TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json";
 
 	private static String apiKey="AIzaSyADd_jadsjrgHfNgY7XXXooYN8QLRrBWZA";
 
@@ -203,5 +209,90 @@ public class GooglePlaceImpl implements GooglePlaceIntf{
 		}
 
 		return nearByPlaceWithAnyTypeList;
+	}
+
+	/*
+	 *4. Details of a particular place 
+	 */
+	@Override
+	public List<ParticularPlaceDetail> getParticularPlaceDetail(String placeId) {
+
+
+		List<ParticularPlaceDetail> placeDetailList = new ArrayList<ParticularPlaceDetail>();
+
+		RestTemplate restTemplate = new RestTemplate();
+		//PlaceDetailResult result;
+
+		PlaceDetailResult result;
+
+		//https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyADd_jadsjrgHfNgY7XXXooYN8QLRrBWZA
+		String placeUrl = DETAIL_URL+"?placeid="+placeId+"&key="+apiKey;
+		System.out.println(placeUrl);
+
+		result = restTemplate.getForObject(placeUrl, PlaceDetailResult.class);
+
+
+		PlaceDetail placeDetail = result.getResult(); 
+
+		ParticularPlaceDetail particularPlaceDetail = new ParticularPlaceDetail();
+		particularPlaceDetail.setGeometry(placeDetail.getGeometry());
+		particularPlaceDetail.setFormatted_address(placeDetail.getFormatted_address());
+		particularPlaceDetail.setOpening_hours(placeDetail.getOpening_hours());
+		particularPlaceDetail.setReviews(placeDetail.getReviews());
+		particularPlaceDetail.setPlace_id(placeDetail.getPlace_id());
+		particularPlaceDetail.setVicinity(placeDetail.getVicinity());
+
+		placeDetailList.add(particularPlaceDetail);
+
+
+		return placeDetailList;
+	}
+
+	/*
+	 * 5. Get a restaurant when a user enter query. For e.g restaurants in san francisco
+	 */
+
+	@Override
+	public List<PlaceTextSearch> getRestaurantBasedOnQuery(String query) {
+
+		List<PlaceTextSearch> nearByRestaurantList = new ArrayList<PlaceTextSearch>();
+
+		RestTemplate restTemplate = new RestTemplate();
+		Result results;
+
+		String placeUrl = TEXT_SEARCH_URL+"?query="+query+"&key="+apiKey;
+		System.out.println(placeUrl);
+
+		results = restTemplate.getForObject(placeUrl, Result.class);
+
+		/*
+		 * - This array will store only the place_id of all the restaurant
+		 * - Size of the array is set to the size of result array returned as JSON response
+		 */
+		placeIdArray = new String[results.getResults().length];
+		int count = 0;
+
+		for(Place places : results.getResults()) {
+
+			PlaceTextSearch nearByRestaurant = new PlaceTextSearch();
+			nearByRestaurant.setGeometry(places.getGeometry());
+			nearByRestaurant.setIcon(places.getIcon());
+			nearByRestaurant.setId(places.getId());
+			nearByRestaurant.setName(places.getName());
+			nearByRestaurant.setPlace_id(places.getPlace_id());
+			nearByRestaurant.setReference(places.getReference());
+			nearByRestaurant.setFormatted_address(places.getFormatted_address());
+			nearByRestaurant.setTypes(places.getTypes());
+			nearByRestaurant.setRating(places.getRating());
+			nearByRestaurant.setOpening_hours(places.getOpening_hours());
+			nearByRestaurant.setPrice_level(places.getPrice_level());
+		//	nearByRestaurant.setPhotos(places.getPhotos());
+			nearByRestaurantList.add(nearByRestaurant);
+
+			//Inserting place_id in the array
+			placeIdArray[count] = places.getPlace_id();
+			count++;
+		}
+		return nearByRestaurantList;
 	}
 }
