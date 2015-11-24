@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
-	<title>CMPE 280 Project</title> 
+	<title>Hangout Amigos</title> 
 	<meta name="description" content="Travel guide" />	    
 	<meta name="keywords" content="cmpe280, javascript, travel, california, carousal, project, tushar karkera, puneet popli, gaurav buche, amol thombre, apurva dixit, HangoutAmigos">
 	<meta property="og:title" content="">
@@ -19,10 +19,21 @@
 	
 	
 	<link rel="prefetch" href="images/zoom.png">
+	
+	<!-- angularjs files -->
+     <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-route/angular-route.js"></script>
+ 
+    <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+      <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  
+	<!-- angularjs script files -->
+	<script type="text/javascript" src="/hangoutamigosapp/js/hangoutamigos_controller.js"></script> 
 		
 </head>
 
-<body>
+<body ng-app="hangoutamigosapp">
 	<div class="navbar navbar-fixed-top" data-activeslide="1">
 		<div class="container">
 		
@@ -36,15 +47,15 @@
 			
 			<div class="nav-collapse collapse navbar-responsive-collapse">
 				<ul class="nav row">
-					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1" href="#slide-1" title="Next Section"><span class="icon icon-home"></span> <span class="text">HOME</span></a></li>
-					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#slide-2" title="Next Section"><span class="icon icon-search"></span> <span class="text">SEARCH</span></a></li>
-					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"><span class="icon icon-picture"></span> <span class="text">HOT DESTINATIONS</span></a></li>
-					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#slide-4" title="Next Section"><span class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
+					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1" href="#index" title="Next Section"><span class="icon icon-home"></span> <span class="text">HOME</span></a></li>
+					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2" href="#index" title="Next Section"><span class="icon icon-search"></span> <span class="text">SEARCH</span></a></li>
+					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#index" title="Next Section"><span class="icon icon-picture"></span> <span class="text">HOT DESTINATIONS</span></a></li>
+					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#index" title="Next Section"><span class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
 					<!--li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5" href="#slide-5" title="Next Section"><span class="icon icon-heart"></span> <span class="text">CLIENTS</span></a></li-->
-					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>		
+					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#index" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>		
 					<!--Nav buttons for login and signup -->		
-					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal1" id="menu-link-7" href="#slide-6" title="Next Section"><span class="icon icon-user"></span> <span class="text">LOGIN</span></a></li>
-					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal" id="menu-link-8" href="#slide-6" title="Next Section"><span class="icon icon-chevron-down"></span> <span class="text">SIGN UP</span></a></li>	
+					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal1" id="menu-link-7" href="#/" title="Next Section"><span class="icon icon-user"></span> <span class="text">LOGIN</span></a></li>
+					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal" id="menu-link-8" href="#index" title="Next Section"><span class="icon icon-chevron-down"></span> <span class="text">SIGN UP</span></a></li>	
 				</ul>
 				<div class="row">
 					<div class="col-sm-2 active-menu"></div>
@@ -351,7 +362,7 @@
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-envelope"></i></a></p>
-					<span class="hover-text font-light ">tushar.karkera@sjsu.edu</span></a>
+					<span class="hover-text font-light ">hangoutamigos@gmail.com</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-home"></i></a></p>
@@ -363,7 +374,7 @@
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-twitter"></i></a></p>
-					<span class="hover-text font-light ">@itstushark</span></a>
+					<span class="hover-text font-light ">@Hangout_Amigos</span></a>
 				</div><!-- /col12 -->
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
@@ -397,27 +408,27 @@
   </div>
 
 	<!-- Sign Up Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="myModal" role="dialog" ng-controller="registerController">
     <div class="modal-dialog" style="height:500px;width:470px;top:50px;left:50px">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <fb:login-button scope="public_profile,email"></fb:login-button>  
+         <!--  <fb:login-button scope="public_profile,email"></fb:login-button> -->  
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">Sign Up for Hangout Amigos</h4>
         </div>
         <div class="modal-body" style="display:block">
         <table>
           <tr>
-          <td style="padding-right:10px"><input class="form-control" type="text" placeholder="First Name" style="width:200px"></td>
-          <td style="padding-right:5px"><input class="form-control" type="text" placeholder="Last Name" style="width:200px"></td>
+          <td style="padding-right:10px"><input class="form-control" name="signupform_firstname" ng-model="signupform_firstname" type="text" placeholder="First Name" style="width:200px"></td>
+          <td style="padding-right:5px"><input class="form-control"  name="signupform_lastname" ng-model="signupform_lastname" type="text" placeholder="Last Name"  style="width:200px"></td>
           </tr>
          </table><br>
-          <input class="form-control" type="email" placeholder="Email" style="width:410px"><br>
-          <input class="form-control" type="password" placeholder="Password" style="width:410px">
+          <input class="form-control" type="email" name="signupform_email" ng-model="signupform_email" placeholder="Email" style="width:410px"><br>
+          <input class="form-control" type="password" name="signupform_password" ng-model="signupform_password" placeholder="Password" style="width:410px">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" style="width:410px;float:left">Sign Up</button><br><br><br>
+          <button type="button" class="btn btn-danger" ng-click="signupform_signup(signupform_firstname, signupform_lastname, signupform_email, signupform_password)" style="width:410px;float:left">Sign Up</button><br><br><br>
 		  <p style="float:left">Already a member?<a style="color:red"> Log in</a></p>
         <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
         </div>
