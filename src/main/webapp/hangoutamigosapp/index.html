@@ -41,7 +41,10 @@
 					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3" href="#slide-3" title="Next Section"><span class="icon icon-picture"></span> <span class="text">HOT DESTINATIONS</span></a></li>
 					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4" href="#slide-4" title="Next Section"><span class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
 					<!--li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5" href="#slide-5" title="Next Section"><span class="icon icon-heart"></span> <span class="text">CLIENTS</span></a></li-->
-					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>
+					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6" href="#slide-6" title="Next Section"><span class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>		
+					<!--Nav buttons for login and signup -->		
+					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal1" id="menu-link-7" href="#slide-6" title="Next Section"><span class="icon icon-user"></span> <span class="text">LOGIN</span></a></li>
+					<li class="col-12 col-sm-1"><a data-toggle="modal" data-target="#myModal" id="menu-link-8" href="#slide-6" title="Next Section"><span class="icon icon-chevron-down"></span> <span class="text">SIGN UP</span></a></li>	
 				</ul>
 				<div class="row">
 					<div class="col-sm-2 active-menu"></div>
@@ -49,7 +52,6 @@
 			</div><!-- /.nav-collapse -->
 		</div><!-- /.container -->
 	</div><!-- /.navbar -->
-	
 	
 	<!-- === Arrows === -->
 	<div id="arrows">
@@ -345,29 +347,173 @@
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-phone"></i></a></p>
-					<span class="hover-text font-light ">+44 4839-4343</span></a>
+					<span class="hover-text font-light ">+1 669-224-9632</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-envelope"></i></a></p>
-					<span class="hover-text font-light ">munter@blacktie.co</span></a>
+					<span class="hover-text font-light ">tushar.karkera@sjsu.edu</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-home"></i></a></p>
-					<span class="hover-text font-light ">London, England<br>zip code 98443</span></a>
+					<span class="hover-text font-light ">San Jose, USA<br>zip code 95110</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-facebook"></i></a></p>
-					<span class="hover-text font-light ">facebook/blacktie_co</span></a>
+					<span class="hover-text font-light ">facebook/tush16</span></a>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-twitter"></i></a></p>
-					<span class="hover-text font-light ">@BlackTie_co</span></a>
+					<span class="hover-text font-light ">@itstushark</span></a>
 				</div><!-- /col12 -->
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 		</div><!-- /container -->
 	</div><!-- /Slide 6 -->
 	
+		<!-- Log In Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog" style="height:600px;width:350px;top:50px;left:50px">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modalLabel1">Login</h4>
+		  <p>or</p>
+		  <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false">      Sign up with Facebook</div>
+        </div>
+        <div class="modal-body" style="display:block;height:100%;max-height:590px;">
+          <input class="form-control" type="text" id="emailaddress1" placeholder="Email Address" style="width:290px"><br>
+          <input class="form-control" type="password" id="password1" placeholder="Password" style="width:290px">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" style="width:290px;float:left" id="login">Log In</button><br><br><br>
+		  <p style="float:left">Don't have an account? <a style="color:red">Sign up</a></p>
+        <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+	<!-- Sign Up Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="height:500px;width:470px;top:50px;left:50px">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <fb:login-button scope="public_profile,email"></fb:login-button>  
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Sign Up for Hangout Amigos</h4>
+        </div>
+        <div class="modal-body" style="display:block">
+        <table>
+          <tr>
+          <td style="padding-right:10px"><input class="form-control" type="text" placeholder="First Name" style="width:200px"></td>
+          <td style="padding-right:5px"><input class="form-control" type="text" placeholder="Last Name" style="width:200px"></td>
+          </tr>
+         </table><br>
+          <input class="form-control" type="email" placeholder="Email" style="width:410px"><br>
+          <input class="form-control" type="password" placeholder="Password" style="width:410px">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" style="width:410px;float:left">Sign Up</button><br><br><br>
+		  <p style="float:left">Already a member?<a style="color:red"> Log in</a></p>
+        <!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+	<!-- JS for signup with fb -->
+	<!--Script for Login with Fb-->
+<script>
+	function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this app.';
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into Facebook.';
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() 
+  {
+		FB.init({
+			appId      : '748465485258847',
+			cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+			xfbml      : true,  // parse social plugins on this page
+			version    : 'v2.5' // use version 2.2
+			});
+
+  // Now that we've initialized the JavaScript SDK, we call 
+  // FB.getLoginStatus().  This function gets the state of the
+  // person visiting this page and can return one of three states to
+  // the callback you provide.  They can be:
+  //
+  // 1. Logged into your app ('connected')
+  // 2. Logged into Facebook, but not your app ('not_authorized')
+  // 3. Not logged into Facebook and can't tell if they are logged into
+  //    your app or not.
+  //
+  // These three cases are handled in the callback function.
+
+		FB.getLoginStatus(function(response) 
+			{
+				statusChangeCallback(response);
+			});
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) 
+  {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() 
+  {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) 
+	{
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+</script>	
+
 </body>
 
 	<!-- SCRIPTS -->
