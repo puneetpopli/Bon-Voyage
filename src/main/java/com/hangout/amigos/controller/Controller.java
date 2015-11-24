@@ -37,7 +37,7 @@ import com.hangout.amigos.util.HangoutAmigosUtil;
 @RestController
 @EnableAutoConfiguration
 @ComponentScan
-@RequestMapping("/bonvoyage/*")	
+@RequestMapping("/hangoutamigos/*")	
 @Import(AppConfiguration.class)
 
 /**
