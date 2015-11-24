@@ -1,10 +1,5 @@
 var hangoutamigosapp = angular.module('hangoutamigosapp', [ 'ngRoute', 'ngResource']);
 
-hangoutamigosapp.run(function($rootScope) {
-	$rootScope.hideUserNavTabs = true;
-	$rootScope.hideStaticTabs = false;
-});
-
 hangoutamigosapp.factory('dataSharing', function() {
 	var sharedData = {}
 	function set(data) {
@@ -31,9 +26,14 @@ hangoutamigosapp.config(function($routeProvider) {
 		controller : 'registerController'
 	})
 	
+	.when('/', {
+		templateUrl : 'index.html',
+		controller : 'loginController'
+	})
+	
 });
 
-
+//Sign up
 hangoutamigosapp.controller('registerController',
 		function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
 	
@@ -56,7 +56,7 @@ hangoutamigosapp.controller('registerController',
 		response
 				.success(function(dataFromServer, status,
 						headers, config) {
-					$scope.success = "User Added Successfully";
+					//$scope.success = "User Added Successfully";
 				});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
@@ -71,3 +71,47 @@ hangoutamigosapp.controller('registerController',
 	console.log('registerController end');
 });
 
+
+//Login
+hangoutamigosapp.controller('loginController', function($scope, $http, $location, $q,
+		dataSharing, $timeout, $rootScope) {
+	console.log('loginController start');
+	
+
+	$scope.loginform_login = function(em1, pass1) {
+		console.log("--> Submitting form "
+				+ $scope.loginform_email + " "
+				+ $scope.loginform_password);
+		console.log("--> Submitting form ");
+		
+		
+		var data = {
+			email : em1,
+			password : pass1
+		};
+		
+		var requestObj = JSON.stringify(data);
+		console.log(requestObj);
+
+		var response = $http.post("../../hangoutamigos/login", requestObj, {});
+		response
+				.success(function(dataFromServer, status,
+						headers, config) {
+					$location.url('/home');
+				});
+		response.error(function(data, status, headers, config) {
+			console.log(data.errorMessage);
+			console.log(status);
+			if(status === 400){
+				$scope.error = data.errorMessage;
+			}
+			return $q.reject(response);
+		});
+	};
+
+	$scope.clickRegister = function() {
+		$location.url('/register');
+	}
+
+	console.log('loginController end');
+});
