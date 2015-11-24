@@ -22,7 +22,7 @@ public class LoginImpl implements LoginIntf{
 		try{
 			BeanUtils.copyProperties(logindao, loginDTO);
 			//check username and password
-			Login login = loginDao.getObject(logindao.getUsername(), logindao.getPassword());
+			Login login = loginDao.getObject(logindao.getEmail(), logindao.getPassword());
 			if(login == null){
 				System.out.println("Invalid Username/Password");
 			}else{

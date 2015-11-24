@@ -126,10 +126,14 @@ public class Controller extends WebMvcConfigurerAdapter {
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
 	@ResponseBody
 	public UserDTO createUser(@RequestBody UserDTO userDto) {
-
+		System.out.println("Inside controller create user");
+		
+		System.out.println("Name " + userDto.getFirstName());
+		
 		userDto.setPassword(HangoutAmigosUtil.passwordEncryption(userDto.getPassword()));
 
 		System.out.println("Encrypted Password " + userDto.getPassword());
+		
 
 		return userOperationImpl.createUser(userDto);
 	}
@@ -156,7 +160,7 @@ public class Controller extends WebMvcConfigurerAdapter {
 	private LoginDTO login(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
 		loginDTO = loginImpl.login(loginDTO);
 		response.addCookie(new Cookie("sessionid", loginDTO.getSessionId()));
-		response.addCookie(new Cookie("username", loginDTO.getUsername()));
+		response.addCookie(new Cookie("username", loginDTO.getEmail()));
 		response.addCookie(new Cookie("userId", Integer.toString(loginDTO.getUserId())));
 		return loginDTO;
 	}

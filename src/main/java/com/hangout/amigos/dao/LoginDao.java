@@ -26,8 +26,8 @@ public class LoginDao {
 		mongoTemplate.updateFirst(query, Update.update("sessionId", login.getSessionId()),"login");
 	}
 	
-	public Login getObject(String username, String password) {
-		Criteria usernameQuery = new Criteria().where("username").is(username);
+	public Login getObject(String email, String password) {
+		Criteria usernameQuery = new Criteria().where("email").is(email);
 		Criteria passwordQuery = new Criteria().where("password").is(HangoutAmigosUtil.passwordEncryption(password));
 		Criteria loginSuccess = new Criteria().andOperator(usernameQuery,passwordQuery);
 		return mongoTemplate.findOne(new Query(loginSuccess), Login.class);
