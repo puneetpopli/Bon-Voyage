@@ -159,6 +159,11 @@ public class Controller extends WebMvcConfigurerAdapter {
 	@ResponseBody
 	private LoginDTO login(@RequestBody LoginDTO loginDTO, HttpServletResponse response) {
 		loginDTO = loginImpl.login(loginDTO);
+		
+		loginDTO.setPassword(HangoutAmigosUtil.passwordEncryption(loginDTO.getPassword()));
+		
+		System.out.println("EMail " + loginDTO.getEmail() + " - Pass "+ loginDTO.getPassword() + " - Userid" + loginDTO.getUserId());
+		
 		response.addCookie(new Cookie("sessionid", loginDTO.getSessionId()));
 		response.addCookie(new Cookie("username", loginDTO.getEmail()));
 		response.addCookie(new Cookie("userId", Integer.toString(loginDTO.getUserId())));
