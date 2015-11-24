@@ -1,5 +1,5 @@
 $(document).ready(function(e) {
-	// Edited js
+	/* Edited js
 	  $(document).ready(function(){
             var submitIcon = $('.searchbox-icon');
             var inputBox = $('.searchbox-input');
@@ -39,7 +39,7 @@ $(document).ready(function(e) {
                     $('.searchbox-icon').css('display','block');
                 }
             }
-	// edited js ends here
+	edited js ends here*/
 
 	$('.with-hover-text, .regular-link').click(function(e){
 		e.stopPropagation();
