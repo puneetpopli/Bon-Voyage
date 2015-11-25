@@ -23,15 +23,15 @@
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js"></script>
 	
 	<!-- angularjs files -->
-     <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="/bower_components/angular-resource/angular-resource.js"></script>
-	<script type="text/javascript" src="/bower_components/angular-route/angular-route.js"></script>
+     <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-resource/angular-resource.js"></script>
+	<script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-route/angular-route.js"></script>
  
-    <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="/hangoutamigosapp/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   
 	<!-- angularjs script files -->
-	<script type="text/javascript" src="/js/hangoutamigos_controller.js"></script> 
+	<script type="text/javascript" src="/hangoutamigosapp/js/hangoutamigos_controller.js"></script> 
 		
 </head>
 
@@ -95,7 +95,7 @@
 	</div><!-- /slide1 -->
 	
 	<!-- === Slide 2 === -->
-	<div class="slide story" id="slide-2" data-slide="2">
+	<div class="slide story" id="slide-2" data-slide="2" ng-controller="searchController">
 		<div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-thin">Weekend or not, put your travel shoes on and get set. But <span class="font-semibold">Where to?</span> Yes, your <span class="font-semibold">amigos</span> are here to help you with that.</div>
@@ -103,12 +103,18 @@
 			<div class="row title-row">
 				<div class="container" style="width:600px; margin:50px auto;">
 				    <form class="searchbox">
-				        <input type="search" placeholder="Search your next adventure" name="search" class="searchbox-input" onkeyup="buttonUp();">
+				        <input type="search" placeholder="Search your next adventure" name="search" ng-model="search" class="searchbox-input">
+				        
+				        <!-- Button -->
+				        <br>
+				      <!--    <button type="button" class="btn btn-danger" ng-click="searchform_search(search)" style="width:410px;float:left">Search</button><br><br><br>
+				       -->
+				        <!-- ends here -->
 				        <!--input type="submit" class="searchbox-submit" value="GO">
 				        <span class="searchbox-icon">Search</span-->
 				    </form>
 				</div>
-				<i class="icon icon-search"></i>
+				<a ng-click="searchform_search(search)"><i class="icon icon-search"></i></a>
 			</div><!-- /row -->
 			<div class="row content-row">
 				<!--div class="col-12 col-lg-3 col-sm-6">
@@ -116,16 +122,8 @@
 					<h2 class="font-thin">Visual <span class="font-semibold">Identity</span></h2>
 					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
 				</div><!-- /col12 -->
-				<div class="col-12 col-lg-3 col-sm-6 col-sm-offset-2">
-					<p><i class="icon icon-laptop"></i></p>
-					<h2 class="font-thin">Web <span class="font-semibold">Design</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-				</div><!-- /col12 -->
-				<div class="col-12 col-lg-3 col-sm-6 col-sm-offset-2">
-					<p><i class="icon icon-tablet"></i></p>
-					<h2 class="font-thin">Mobile <span class="font-semibold">Apps</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-				</div><!-- /col12 -->
+				
+			
 				<!--div class="col-12 col-lg-3 col-sm-6">
 					<p><i class="icon icon-pencil"></i></p>
 					<h2 class="font-semibold">Development</h2>
@@ -275,10 +273,10 @@
 		<div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-thin">See us <span class="font-semibold">at work. <span class="font-thin">Press play <i class="icon icon-play"></i></span></div>
-				<video width="700" height="450" controls="controls" poster="image" preload="true" >
-					<source src="/media/gopro.mov" type="video/mov"/>
-					<source src="/media/gopro.mp4" type="video/mp4" />
-					<source src="/media/gopro.oog" type="video/oog" />
+				<video width="700" height="450" controls="controls" preload="true" >
+					<source src="/hangoutamigosapp/media/gopro.mov" type="video/mov"/>
+					<source src="/hangoutamigosapp/media/gopro.mp4" type="video/mp4" />
+					<source src="/hangoutamigosapp/media/gopro.oog" type="video/oog" />
    				</video>
 			</div><!-- /row -->
 			

@@ -111,9 +111,9 @@ public class Controller extends WebMvcConfigurerAdapter {
 	/*
 	 * 5.  Get a restaurant when a user enter query. For e.g restaurants in san francisco
 	 */
-	@RequestMapping(value="/getrestaurant/restaurants/textsearch/{query}", method=RequestMethod.GET)
-	public ResponseEntity<List<PlaceTextSearch>> getNearByRestaurantTextSearch(@PathVariable("query") String  query ) {
-
+	@RequestMapping(value="/getplace/textsearch/{query}", method=RequestMethod.GET)
+	public ResponseEntity<List<PlaceTextSearch>> getTextSearch(@PathVariable("query") String  query ) {
+		
 		List<PlaceTextSearch> place = googlePlace.getRestaurantBasedOnQuery(query);
 		return new ResponseEntity<List<PlaceTextSearch>>(place, HttpStatus.OK);
 	}

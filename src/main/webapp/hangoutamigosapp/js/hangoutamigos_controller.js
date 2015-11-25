@@ -1,5 +1,7 @@
 var hangoutamigosapp = angular.module('hangoutamigosapp', [ 'ngRoute', 'ngResource']);
 
+
+
 hangoutamigosapp.factory('dataSharing', function() {
 	var sharedData = {}
 	function set(data) {
@@ -29,6 +31,11 @@ hangoutamigosapp.config(function($routeProvider) {
 	.when('/', {
 		templateUrl : 'index.html',
 		controller : 'loginController'
+	})
+	
+	.when('/', {
+		templateUrl : 'index.html',
+		controller : 'searchController'
 	})
 	
 });
@@ -76,8 +83,9 @@ hangoutamigosapp.controller('registerController',
 hangoutamigosapp.controller('loginController', function($scope, $http, $location, $q,
 		dataSharing, $timeout, $rootScope) {
 	console.log('loginController start');
-	
 
+	
+	
 	$scope.loginform_login = function(em1, pass1) {
 		console.log("--> Submitting form "
 				+ $scope.loginform_email + " "
@@ -114,4 +122,55 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 	}
 
 	console.log('loginController end');
+});
+
+
+//Search Controller
+hangoutamigosapp.controller('searchController',
+		function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
+	
+	$rootScope.textResult = [];
+	$rootScope.lat = [];
+	$rootScope.lng = [];
+	
+
+	console.log('searchController start');
+
+	$scope.searchform_search = function(searchQuery) {
+		
+		
+		var options = {
+				 method: 'GET',
+				 url: '../../hangoutamigos/getplace/textsearch/'+searchQuery,
+				 
+		}
+		
+		$http(options).then(function successCallback(response) {
+		    
+			
+			var length = JSON.stringify(response.data.length);
+			
+			for(var i=0; i<length; i++) {
+				
+				//Storing latitude in an array
+				$rootScope.lat[i] = response.data[i].geometry.location.lat;
+				console.log($rootScope.lat[i]);
+				
+				//storing longitude in an arrya
+				$rootScope.lng[i] = response.data[i].geometry.location.lng;
+				console.log($rootScope.lng[i]);
+				
+				//storing json response in an array
+				$rootScope.textResult[i] = response.data[i];
+				console.log($rootScope.textResult[i]);
+			}
+			
+			console.log(length);
+			
+		  }, function errorCallback(response) {
+		    
+		  });
+
+	};
+	console.log('registerController end');
 });
