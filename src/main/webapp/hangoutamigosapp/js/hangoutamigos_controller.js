@@ -45,7 +45,20 @@ hangoutamigosapp.factory('dataSharing', function() {
 
 hangoutamigosapp.config(function($routeProvider) {
 
+
 	$routeProvider
+
+	.when('/', {
+		templateUrl : 'home.html',
+		controller : 'homeController'
+	})
+
+	.when('/search', {
+		templateUrl : 'search.html',
+		controller : 'restaurantController'
+	});
+
+	/*	$routeProvider
 
 	.when('/', {
 		templateUrl : 'home.html',
@@ -78,7 +91,7 @@ hangoutamigosapp.config(function($routeProvider) {
 	.when('/search', {
 		templateUrl : 'search.html',
 		controller : 'restaurantController'
-	})
+	})*/
 
 });
 
@@ -179,12 +192,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 
 //Search Controller
 hangoutamigosapp.controller('searchController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
-
-//	$rootScope.textResult = [];
-//	$rootScope.lat = [];
-//	$rootScope.lng = [];
-
-
+	
 	console.log('searchController start');
 
 	$scope.searchform_search = function() {
@@ -193,40 +201,9 @@ hangoutamigosapp.controller('searchController', function($scope, $http, $locatio
 			alert('Please enter the search query');
 		}
 		else {
-
-			var options = {
-					method: 'GET',
-					url: '../../hangoutamigos/getplace/textsearch/'+$scope.search,
-
-			}
-
-			$http(options).then(function successCallback(response) {
-				var length = JSON.stringify(response.data.length);
-				var latitude;
-				var longitude;
-				for(var i=0; i<length; i++) {
-
-					console.log("inside for");
-					dataSharing.setLng(response.data[i].geometry.location.lng);
-
-					dataSharing.setLat(response.data[i].geometry.location.lat);
-
-
-					longitude = dataSharing.getLng();
-					latitude = dataSharing.getLat();
-					console.log(longitude);
-					console.log(latitude);
-				}
-
-				console.log(length);
-
-			}, function errorCallback(response) {
-
-			});
+			$rootScope.search = $scope.search;
 			$location.path('/search');
-			//window.location.href = "/hangoutamigosapp/search.html";
-
-		} //else ends
+		}
 	};
 
 	console.log('searchController end');
@@ -241,6 +218,7 @@ hangoutamigosapp.controller('restaurantController',
 	console.log('restaurantController start');
 
 	//for restaurant
+
 	$rootScope.rating = [];
 	$rootScope.restaurantName = [];
 	$rootScope.vicinity = [];
@@ -257,6 +235,59 @@ hangoutamigosapp.controller('restaurantController',
 	$rootScope.placeLat = [];
 	$rootScope.placeLng = [];
 	$rootScope.placeIcon = [];
+
+	//Tushar's code
+	$scope.initRest = function(){
+
+		console.log("inside initRest");
+		var options = {
+				method: 'GET',
+				url: '../../hangoutamigos/getplace/textsearch/'+$rootScope.search
+		};
+
+		$http(options).then(function successCallback(response) {
+			var length = JSON.stringify(response.data.length);
+			var latitude;
+			var longitude;
+			for(var i=0; i<length; i++) {
+
+				console.log("inside for");
+				dataSharing.setLng(response.data[i].geometry.location.lng);
+
+				dataSharing.setLat(response.data[i].geometry.location.lat);
+
+				$scope.latLong = [];
+				$scope.latLong[0] = dataSharing.getLng()[0];
+				$scope.latLong[1] = dataSharing.getLat()[0];
+				console.log($scope.latLong);
+				google.maps.event.addDomListener(window, 'load', initialize());
+				/*console.log(longitude);
+				console.log(latitude);
+				$rootScope.latLong = [latitude,longitude];*/
+			}
+
+			//console.log(length);
+
+		}, function errorCallback(response) {
+
+		});
+
+	};
+
+	function initialize(){
+		var mapCanvas = document.getElementById('map');
+		console.log("in rest ctrl");
+		console.log($scope.latLong);
+		var mapOptions = {
+				center: new google.maps.LatLng($scope.latLong[1], $scope.latLong[0]),
+				zoom: 8,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+	};
+
+
+	/*Tushar's code ends here*/
 
 	//function to get the restaurant
 	$scope.restaurant_result = function() {
@@ -358,8 +389,8 @@ hangoutamigosapp.controller('restaurantController',
 		console.log('Place Latitude '+placeLatitude)
 
 		var options2 = {
-				method: 'GET',
-				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+museum,
+			method: 'GET',
+			url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+museum,
 		}
 
 		$http(options2).then(function successCallback(response) {
@@ -368,7 +399,7 @@ hangoutamigosapp.controller('restaurantController',
 			console.log(response.data);
 
 			for(var i=0; i<4; i++) {
-				
+
 				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
 				$rootScope.placeName[i] = response.data[i].name;
 				$rootScope.placeIcon[i] = response.data[i].icon;
@@ -378,10 +409,10 @@ hangoutamigosapp.controller('restaurantController',
 
 
 			}
-			
-			
+
+
 			//To check the values on console
-			
+
 			/*for(var j=0; j<9; j++) {
 				console.log($rootScope.nearByPlaceId[j]);
 				console.log($rootScope.placeName[j]);
@@ -389,16 +420,16 @@ hangoutamigosapp.controller('restaurantController',
 				console.log($rootScope.placeVicinity[j]);
 				console.log($rootScope.placeLat[j]);
 				console.log($rootScope.placeLng[j]);
-				
+
 			}*/
-			 
+
 
 		}, function errorCallback(response) {
 
 		});
-		
+
 		/******** To get all the near by parks *************/
-		
+
 		var options3 = {
 				method: 'GET',
 				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+park,
@@ -410,7 +441,7 @@ hangoutamigosapp.controller('restaurantController',
 			console.log(response.data);
 
 			for(var i=5; i<9; i++) {
-				
+
 				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
 				$rootScope.placeName[i] = response.data[i].name;
 				$rootScope.placeIcon[i] = response.data[i].icon;
@@ -420,15 +451,15 @@ hangoutamigosapp.controller('restaurantController',
 
 
 			}
-			 
+
 
 		}, function errorCallback(response) {
 
 		});
-		
-		
+
+
 		/*************************/
-		
+
 
 	};
 	console.log('restaurantController end');
