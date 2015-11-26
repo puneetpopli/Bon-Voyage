@@ -109,7 +109,6 @@ hangoutamigosapp.controller('homeController',function($scope, $http, $location, 
 //Sign up
 hangoutamigosapp.controller('registerController',function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
 
-
 	console.log('registerController start');
 
 	$scope.signupform_signup = function(fn, ln, em, pass) {
@@ -192,7 +191,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 
 //Search Controller
 hangoutamigosapp.controller('searchController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
-	
+
 	console.log('searchController start');
 
 	$scope.searchform_search = function() {
@@ -218,7 +217,16 @@ hangoutamigosapp.controller('restaurantController',
 	console.log('restaurantController start');
 
 	//for restaurant
+	//storing the entire result of the restaurant search
+	$rootScope.rating1 = [];
+	$rootScope.restaurantName1 = [];
+	$rootScope.vicinity1 = [];
+	$rootScope.placeId1 = [];
+	$rootScope.restaurantLat1 = [];
+	$rootScope.restaurantLng1 = [];
+	$rootScope.icon1 = [];
 
+	//storing only 5 values and values which are not undefined
 	$rootScope.rating = [];
 	$rootScope.restaurantName = [];
 	$rootScope.vicinity = [];
@@ -229,6 +237,22 @@ hangoutamigosapp.controller('restaurantController',
 
 
 	//for near by places
+	//storing the entire result of the nearby place search
+	$rootScope.placeName1 = [];
+	$rootScope.placeVicinity1 = [];
+	$rootScope.nearByPlaceId1 = [];
+	$rootScope.placeLat1 = [];
+	$rootScope.placeLng1 = [];
+	$rootScope.placeIcon1 = [];
+	
+	$rootScope.placeName2 = [];
+	$rootScope.placeVicinity2 = [];
+	$rootScope.nearByPlaceId2 = [];
+	$rootScope.placeLat2 = [];
+	$rootScope.placeLng2 = [];
+	$rootScope.placeIcon2 = [];
+
+	//Storing only 5 values and values which are not undefined
 	$rootScope.placeName = [];
 	$rootScope.placeVicinity = [];
 	$rootScope.nearByPlaceId = [];
@@ -236,7 +260,7 @@ hangoutamigosapp.controller('restaurantController',
 	$rootScope.placeLng = [];
 	$rootScope.placeIcon = [];
 
-	//Tushar's code
+
 	$scope.initRest = function(){
 
 		console.log("inside initRest");
@@ -261,12 +285,8 @@ hangoutamigosapp.controller('restaurantController',
 				$scope.latLong[1] = dataSharing.getLat()[0];
 				console.log($scope.latLong);
 				google.maps.event.addDomListener(window, 'load', initialize());
-				/*console.log(longitude);
-				console.log(latitude);
-				$rootScope.latLong = [latitude,longitude];*/
-			}
 
-			//console.log(length);
+			}
 
 		}, function errorCallback(response) {
 
@@ -274,8 +294,10 @@ hangoutamigosapp.controller('restaurantController',
 
 	};
 
+	var marker;
 	function initialize(){
 		var mapCanvas = document.getElementById('map');
+
 		console.log("in rest ctrl");
 		console.log($scope.latLong);
 		var mapOptions = {
@@ -284,10 +306,13 @@ hangoutamigosapp.controller('restaurantController',
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		var map = new google.maps.Map(mapCanvas, mapOptions);
+
+		marker = new google.maps.Marker({
+			position: new google.maps.LatLng($scope.latLong[1], $scope.latLong[0]),
+			map: map
+		});
 	};
 
-
-	/*Tushar's code ends here*/
 
 	//function to get the restaurant
 	$scope.restaurant_result = function() {
@@ -325,45 +350,78 @@ hangoutamigosapp.controller('restaurantController',
 
 			console.log(response.data);
 
-			for(var i=0; i<4; i++) {
+			//Storing all the values in 1 array
+			for(var l=0; l<response.data.length; l++) {
+				if(typeof response.data[l].rating != undefined ||typeof response.data[l].icon != undefined || typeof response.data[l].place_id != undefined 
+						|| typeof response.data[l].geometry.location.lat != undefined || typeof response.data[l].geometry.location.lng != undefined
+						|| typeof response.data[l].name != undefined || typeof response.data[l].vicinity != undefined) {
+					$rootScope.rating1[l] = response.data[l].rating;
+					$rootScope.restaurantLat1[l] = response.data[l].geometry.location.lat;
+					$rootScope.restaurantLng1[l] = response.data[l].geometry.location.lng;
+					$rootScope.restaurantName1[l] = response.data[l].name;
+					$rootScope.vicinity1[l] = response.data[l].vicinity;
+					$rootScope.placeId1[l] = response.data[l].place_id;
+					$rootScope.icon1[l] = response.data[l].icon;
+				}
+			}
 
-				if($rootScope.rating[i]!==null) {
-					$rootScope.rating[i] = 3.4;
-					$rootScope.restaurantLat[i] = response.data[i].geometry.location.lat;
-					$rootScope.restaurantLng[i] = response.data[i].geometry.location.lng;
-					$rootScope.restaurantName[i] = response.data[i].name;
-					$rootScope.vicinity[i] = response.data[i].vicinity;
-					$rootScope.placeId[i] = response.data[i].place_id;
-					$rootScope.icon[i] = response.data[i].icon;
-					console.log('Rating ' + response.data[i].rating);
+			for(var i=0; i<=4; i++) {
+
+				if($rootScope.rating1[i]!==null) {
+					$rootScope.rating[i] =3.4;
+					$rootScope.restaurantLat[i] = $rootScope.restaurantLat1[i];
+					$rootScope.restaurantLng[i] = $rootScope.restaurantLng1[i];
+					$rootScope.restaurantName[i] = $rootScope.restaurantName1[i];
+					$rootScope.vicinity[i] = $rootScope.vicinity1[i];
+					$rootScope.placeId[i] = $rootScope.placeId1[i];
+					$rootScope.icon[i] = $rootScope.icon1[i];
+					//console.log('Rating ' + response.data[i].rating);
 				}
 				else {
-					$rootScope.rating[i] = response.data[i].rating;
-					$rootScope.restaurantName[i] = response.data[i].name;
-					$rootScope.vicinity[i] = response.data[i].vicinity;
-					$rootScope.placeId[i] = response.data[i].place_id;
-					$rootScope.icon[i] = response.data[i].icon;
-					console.log('Rating ' + response.data[i].rating);
+					$rootScope.rating[i] = $rootScope.rating1[i];
+					$rootScope.restaurantLat[i] = $rootScope.restaurantLat1[i];
+					$rootScope.restaurantLng[i] = $rootScope.restaurantLng1[i];
+					$rootScope.restaurantName[i] = $rootScope.restaurantName1[i];
+					$rootScope.vicinity[i] = $rootScope.vicinity1[i];
+					$rootScope.placeId[i] = $rootScope.placeId1[i];
+					$rootScope.icon[i] = $rootScope.icon1[i];
+					//console.log('Rating ' + response.data[i].rating);
 				}
-			}
 
-			//To check the values on console
-			/*
-			for(var j=0; j<$rootScope.rating.length; j++) {
-				console.log($rootScope.restaurantLng[j]);
-				console.log($rootScope.restaurantLat[j]);
-				console.log($rootScope.rating[j]);
-				console.log($rootScope.restaurantName[j]);
-				console.log($rootScope.vicinity[j]);
-				console.log($rootScope.placeId[j]);
 			}
-			 */
+			//edited here
+			google.maps.event.addDomListener(window, 'load', initializeRestaurantMap());
 
 		}, function errorCallback(response) {
 
 		});
 
 	};
+
+	//This will display the map with all the restaurants on the map
+	var marker1;
+	function initializeRestaurantMap(){
+		var mapCanvas = document.getElementById('map');
+		console.log('in initializeRestaurantMap');
+		var mapOptions = {
+				center: new google.maps.LatLng($scope.latLong[1], $scope.latLong[0]),
+				zoom: 15,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(mapCanvas, mapOptions);
+
+		for(var k=0; k<=4; k++) {
+			marker1 = new google.maps.Marker({
+				position: new google.maps.LatLng($rootScope.restaurantLat[k], $rootScope.restaurantLng[k]),
+				map: map,
+				animation: google.maps.Animation.DROP
+			});
+		}
+
+
+	};
+
+
 
 	/************************************************************/
 
@@ -390,7 +448,7 @@ hangoutamigosapp.controller('restaurantController',
 
 		var options2 = {
 			method: 'GET',
-			url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+museum,
+			url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+3000+'/type/'+museum,
 		}
 
 		$http(options2).then(function successCallback(response) {
@@ -398,30 +456,33 @@ hangoutamigosapp.controller('restaurantController',
 
 			console.log(response.data);
 
-			for(var i=0; i<4; i++) {
 
-				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
-				$rootScope.placeName[i] = response.data[i].name;
-				$rootScope.placeIcon[i] = response.data[i].icon;
-				$rootScope.placeVicinity[i] = response.data[i].vicinity;
-				$rootScope.placeLat[i] = response.data[i].geometry.location.lat;
-				$rootScope.placeLng[i] = response.data[i].geometry.location.lng;
+			//Storing all the values in 1 array
+			for(var l=0; l<response.data.length; l++) {
+				if(typeof response.data[l].icon != undefined || typeof response.data[l].place_id != undefined 
+						|| typeof response.data[l].geometry.location.lat != undefined || typeof response.data[l].geometry.location.lng != undefined
+						|| typeof response.data[l].name != undefined || typeof response.data[l].vicinity != undefined) {
 
-
+					$rootScope.placeLat1[l] = response.data[l].geometry.location.lat;
+					$rootScope.placeLng1[l] = response.data[l].geometry.location.lng;
+					$rootScope.placeName1[l] = response.data[l].name;
+					$rootScope.placeVicinity1[l] = response.data[l].vicinity;
+					$rootScope.nearByPlaceId1[l] = response.data[l].place_id;
+					$rootScope.placeIcon1[l] = response.data[l].icon;
+				}
 			}
 
 
-			//To check the values on console
 
-			/*for(var j=0; j<9; j++) {
-				console.log($rootScope.nearByPlaceId[j]);
-				console.log($rootScope.placeName[j]);
-				console.log($rootScope.placeIcon[j]);
-				console.log($rootScope.placeVicinity[j]);
-				console.log($rootScope.placeLat[j]);
-				console.log($rootScope.placeLng[j]);
+			for(var i=0; i<=4; i++) {
+				$rootScope.nearByPlaceId[i] = $rootScope.nearByPlaceId1[i];
+				$rootScope.placeName[i] = $rootScope.placeName1[i];
+				$rootScope.placeIcon[i] = $rootScope.placeIcon1[i];
+				$rootScope.placeVicinity[i] = $rootScope.placeVicinity1[i];
+				$rootScope.placeLat[i] = $rootScope.placeLat1[i];
+				$rootScope.placeLng[i] = $rootScope.placeLng1[i];
 
-			}*/
+			}
 
 
 		}, function errorCallback(response) {
@@ -432,31 +493,71 @@ hangoutamigosapp.controller('restaurantController',
 
 		var options3 = {
 				method: 'GET',
-				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+park,
+				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+3000+'/type/'+park,
 		}
 
 		$http(options3).then(function successCallback(response) {
 			var length = JSON.stringify(response.data.length);
 
 			console.log(response.data);
+			
+			
+			
+			//Storing all the values in 1 array
+			for(var l=0; l<response.data.length; l++) {
+				if(typeof response.data[l].icon != undefined || typeof response.data[l].place_id != undefined 
+						|| typeof response.data[l].geometry.location.lat != undefined || typeof response.data[l].geometry.location.lng != undefined
+						|| typeof response.data[l].name != undefined || typeof response.data[l].vicinity != undefined) {
 
-			for(var i=5; i<9; i++) {
-
-				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
-				$rootScope.placeName[i] = response.data[i].name;
-				$rootScope.placeIcon[i] = response.data[i].icon;
-				$rootScope.placeVicinity[i] = response.data[i].vicinity;
-				$rootScope.placeLat[i] = response.data[i].geometry.location.lat;
-				$rootScope.placeLng[i] = response.data[i].geometry.location.lng;
-
-
+					$rootScope.placeLat2[l] = response.data[l].geometry.location.lat;
+					$rootScope.placeLng2[l] = response.data[l].geometry.location.lng;
+					$rootScope.placeName2[l] = response.data[l].name;
+					$rootScope.placeVicinity2[l] = response.data[l].vicinity;
+					$rootScope.nearByPlaceId2[l] = response.data[l].place_id;
+					$rootScope.placeIcon2[l] = response.data[l].icon;
+				}
 			}
+
+			for(var i=5; i<=9; i++) {
+				$rootScope.nearByPlaceId[i] = $rootScope.nearByPlaceId2[i];
+				$rootScope.placeName[i] = $rootScope.placeName2[i];
+				$rootScope.placeIcon[i] = $rootScope.placeIcon2[i];
+				$rootScope.placeVicinity[i] = $rootScope.placeVicinity2[i];
+				$rootScope.placeLat[i] = $rootScope.placeLat2[i];
+				$rootScope.placeLng[i] = $rootScope.placeLng2[i];
+			}
+
+			//edited here
+			google.maps.event.addDomListener(window, 'load', initializePlaceMap());
 
 
 		}, function errorCallback(response) {
 
 		});
 
+		//This will display the map with all the restaurants on the map
+		var marker2;
+		function initializePlaceMap(){
+			var mapCanvas = document.getElementById('map');
+			console.log('in initializePlaceMap');
+			var mapOptions = {
+					center: new google.maps.LatLng($scope.latLong[1], $scope.latLong[0]),
+					zoom: 11,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			var map = new google.maps.Map(mapCanvas, mapOptions);
+
+			for(var m=0; m<=9; m++) {
+				//console.log($rootScope.placeName[m]);
+				marker1 = new google.maps.Marker({
+					position: new google.maps.LatLng($rootScope.placeLat[m], $rootScope.placeLng[m]),
+					map: map,
+					animation: google.maps.Animation.DROP
+				});
+			}
+
+
+		}; //map ends here
 
 		/*************************/
 
