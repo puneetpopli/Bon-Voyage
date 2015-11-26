@@ -1,0 +1,151 @@
+
+<div ng-controller="registerController">
+	<!-- Facebook Sign up -->
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '493989790793842', // App ID
+				channelUrl : 'YOUR_WEBSITE_CHANNEL_URL',
+				status : true, // check login status
+				cookie : true, // enable cookies to allow the server to access the session
+				xfbml : true
+			// parse XFBML
+			});
+		};
+
+		(function(d) {
+			var js, id = 'facebook-jssdk', ref = d
+					.getElementsByTagName('script')[0];
+			if (d.getElementById(id)) {
+				return;
+			}
+			js = d.createElement('script');
+			js.id = id;
+			js.async = true;
+			js.src = "//connect.facebook.net/en_US/all.js";
+			ref.parentNode.insertBefore(js, ref);
+		}(document));
+
+		function Login() {
+
+			FB.login(function(response) {
+				if (response.authResponse) {
+					getUserInfo(); // Get User Information.
+
+				} else {
+					console.log('Authorization failed.');
+				}
+			}, {
+				scope : 'public_profile, email'
+			});
+		}
+
+		function getUserInfo() {
+			FB.api('/me', 'get', {
+				fields : 'id,name,email'
+			}, function(response) {
+				//var str="<b>Name</b> : "+response.name+"<br>";
+				//document.getElementById("status").innerHTML=str;
+
+				//response.name       - User Full name
+				//response.link       - User Facebook URL
+				//response.username   - User name
+				//response.id         - id
+				//response.email      - User email
+
+				console.log(JSON.stringify(response));
+				alert(response.email);
+
+			});
+		}
+
+		FB.Event.subscribe('auth.authResponseChange', function(response) {
+			if (response.status === 'connected') {
+				// document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+
+			} else if (response.status === 'not_authorized') {
+				//FAILED
+			} else {
+				// document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
+			}
+		});
+
+		function Logout() {
+			FB.logout(function() {
+				document.location.reload();
+			});
+
+		}
+	</script>
+
+
+	<!-- Google Signup -->
+	<script>
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+			console.log("Name: " + profile.getName());
+			console.log("Email: " + profile.getEmail());
+		};
+	</script>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-md-4 col-sm-4 col-lg-4">
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<strong class="lead">Wanna be our <em>Amigo</em>?
+						</strong>
+					</div>
+					<div class="panel-body">
+						<a class="btn btn-block btn-social btn-facebook center-block"
+							onclick="Login();"> <span class="fa fa-facebook"></span>
+							<p class="text-center">Sign in with Facebook</p>
+						</a>
+						<hr>
+						<div class="g-signin2" data-width="325" data-height="40"
+							data-longtitle="true" data-onsuccess="onSignIn"></div>
+						<hr>
+						<form class="form-horizontal">
+							<div class="form-group">
+								<div class="col-sm-10 col-md-6 col-lg-6">
+									<input type="text" class="form-control"
+										name="signupform_firstname" ng-model="signupform_firstname"
+										id="userfirstname" placeholder="First Name"><br>
+								</div>
+								<div class="col-sm-10 col-md-6 col-lg-6">
+									<input type="text" class="form-control"
+										name="signupform_lastname" ng-model="signupform_lastname"
+										id="userlastname" placeholder="Last Name"><br>
+								</div>
+								<div class="col-sm-10 col-md-12 col-lg-12">
+									<input type="email" class="form-control"
+										name="signupform_email" ng-model="signupform_email"
+										id="useremail" placeholder="Email ID"><br>
+								</div>
+								<div class="col-sm-10 col-md-12 col-lg-12">
+									<input type="password" class="form-control"
+										ng-model="signupform_password" placeholder="Password"
+										id="userpassword" placeholder="Password"><br>
+								</div>
+								<div class="col-sm-10 col-md-12 col-lg-12">
+									<button type="submit"
+										class="btn btn-block btn-default btn-success"
+										ng-click="signupform_signup(signupform_firstname, signupform_lastname, signupform_email, signupform_password)">
+										<strong>Register</strong>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="panel-footer text-right">
+						Already on HangoutAmigos? <a href="#" class="">Log in</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	</div>

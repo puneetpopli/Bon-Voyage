@@ -1,11 +1,4 @@
-/*
- * Author: Carlos Alvarez
- * URL: http://alvarez.is
- *
- * Project Name: Munter - Free Bootstrap 3 Theme
- * Version: 1.0
- * URL: http://blacktie.co
- */
+
  
 .font-thin {
 	font-family: "Titillium Web", sans-serif;
@@ -213,6 +206,11 @@ body {
 	padding-bottom: 65px;
 	padding-top: 50px;
 	text-align: center;
+}
+
+#search-slide-1{
+	background-color: #8C489F;
+	color: #ffffff;
 }
 
 #slide-1 {
@@ -695,5 +693,10 @@ body {
 .byline a{
   text-decoration:none;
   color: #d74b4b;
+}
+
+a:hover i{
+	display: inline-block;
+	text-decoration:none !important;
 }
 /* CSS for the search box ends here */ 
