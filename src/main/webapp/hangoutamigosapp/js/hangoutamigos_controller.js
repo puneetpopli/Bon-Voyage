@@ -240,14 +240,25 @@ hangoutamigosapp.controller('restaurantController',
 
 	console.log('restaurantController start');
 
-
+	//for restaurant
 	$rootScope.rating = [];
 	$rootScope.restaurantName = [];
 	$rootScope.vicinity = [];
 	$rootScope.placeId = [];
 	$rootScope.restaurantLat = [];
 	$rootScope.restaurantLng = [];
+	$rootScope.icon = [];
 
+
+	//for near by places
+	$rootScope.placeName = [];
+	$rootScope.placeVicinity = [];
+	$rootScope.nearByPlaceId = [];
+	$rootScope.placeLat = [];
+	$rootScope.placeLng = [];
+	$rootScope.placeIcon = [];
+
+	//function to get the restaurant
 	$scope.restaurant_result = function() {
 
 		var temparr = [];
@@ -292,6 +303,7 @@ hangoutamigosapp.controller('restaurantController',
 					$rootScope.restaurantName[i] = response.data[i].name;
 					$rootScope.vicinity[i] = response.data[i].vicinity;
 					$rootScope.placeId[i] = response.data[i].place_id;
+					$rootScope.icon[i] = response.data[i].icon;
 					console.log('Rating ' + response.data[i].rating);
 				}
 				else {
@@ -299,6 +311,7 @@ hangoutamigosapp.controller('restaurantController',
 					$rootScope.restaurantName[i] = response.data[i].name;
 					$rootScope.vicinity[i] = response.data[i].vicinity;
 					$rootScope.placeId[i] = response.data[i].place_id;
+					$rootScope.icon[i] = response.data[i].icon;
 					console.log('Rating ' + response.data[i].rating);
 				}
 			}
@@ -313,11 +326,109 @@ hangoutamigosapp.controller('restaurantController',
 				console.log($rootScope.vicinity[j]);
 				console.log($rootScope.placeId[j]);
 			}
-			*/
+			 */
 
 		}, function errorCallback(response) {
 
 		});
+
+	};
+
+	/************************************************************/
+
+	//function to get the near by place
+	$scope.neayByPlace_result = function() {
+
+		var placeLngArr = [];
+		placeLngArr = dataSharing.getLng();		
+
+		var placeLatArr = [];
+		placeLatArr = dataSharing.getLat();
+
+		var museum = 'museum';
+		var park = 'park';
+		var placeLatitude;
+		var placeLongitude;
+
+
+		placeLongitude = placeLngArr[0];
+		console.log('Place longitude ' + placeLongitude);
+
+		placeLatitude = placeLatArr[0];
+		console.log('Place Latitude '+placeLatitude)
+
+		var options2 = {
+				method: 'GET',
+				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+museum,
+		}
+
+		$http(options2).then(function successCallback(response) {
+			var length = JSON.stringify(response.data.length);
+
+			console.log(response.data);
+
+			for(var i=0; i<4; i++) {
+				
+				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
+				$rootScope.placeName[i] = response.data[i].name;
+				$rootScope.placeIcon[i] = response.data[i].icon;
+				$rootScope.placeVicinity[i] = response.data[i].vicinity;
+				$rootScope.placeLat[i] = response.data[i].geometry.location.lat;
+				$rootScope.placeLng[i] = response.data[i].geometry.location.lng;
+
+
+			}
+			
+			
+			//To check the values on console
+			
+			/*for(var j=0; j<9; j++) {
+				console.log($rootScope.nearByPlaceId[j]);
+				console.log($rootScope.placeName[j]);
+				console.log($rootScope.placeIcon[j]);
+				console.log($rootScope.placeVicinity[j]);
+				console.log($rootScope.placeLat[j]);
+				console.log($rootScope.placeLng[j]);
+				
+			}*/
+			 
+
+		}, function errorCallback(response) {
+
+		});
+		
+		/******** To get all the near by parks *************/
+		
+		var options3 = {
+				method: 'GET',
+				url: '../../hangoutamigos/getplaces/'+placeLatitude+'/'+placeLongitude+'/'+5000+'/type/'+park,
+		}
+
+		$http(options3).then(function successCallback(response) {
+			var length = JSON.stringify(response.data.length);
+
+			console.log(response.data);
+
+			for(var i=5; i<9; i++) {
+				
+				$rootScope.nearByPlaceId[i] = response.data[i].place_id;
+				$rootScope.placeName[i] = response.data[i].name;
+				$rootScope.placeIcon[i] = response.data[i].icon;
+				$rootScope.placeVicinity[i] = response.data[i].vicinity;
+				$rootScope.placeLat[i] = response.data[i].geometry.location.lat;
+				$rootScope.placeLng[i] = response.data[i].geometry.location.lng;
+
+
+			}
+			 
+
+		}, function errorCallback(response) {
+
+		});
+		
+		
+		/*************************/
+		
 
 	};
 	console.log('restaurantController end');
