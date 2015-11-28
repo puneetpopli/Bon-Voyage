@@ -148,46 +148,21 @@
 					<form class="searchbox">
 						<input type="search" placeholder="Search your next adventure"
 							name="search" ng-model="search" class="searchbox-input">
-
-						<!-- Button -->
-						<br>
-						<!--    <button type="button" class="btn btn-danger" ng-click="searchform_search(search)" style="width:410px;float:left">Search</button><br><br><br>
-				       -->
-						<!-- ends here -->
-						<!--input type="submit" class="searchbox-submit" value="GO">
-				        <span class="searchbox-icon">Search</span-->
 					</form>
 				</div>
 				<div ng-click="searchform_search()">
 				<i class="icon icon-search"></i>
 				</div>
-
 			</div>
-			<!-- /row -->
-			<div class="row content-row">
-				<!--div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-eye-open"></i></p>
-					<h2 class="font-thin">Visual <span class="font-semibold">Identity</span></h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-				</div><!-- /col12 -->
-
-
-				<!--div class="col-12 col-lg-3 col-sm-6">
-					<p><i class="icon icon-pencil"></i></p>
-					<h2 class="font-semibold">Development</h2>
-					<h4 class="font-thin">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h4>
-				</div><!-- /col12 -->
-			</div>
-			<!-- /row -->
+		
 		</div>
-		<!-- /container -->
 	</div>
 	<!-- /slide2 -->
 
 	<!-- === SLide 3 - Portfolio -->
-	<div class="slide story" id="slide-3" data-slide="3">
+	<div class="slide story" id="slide-3" data-slide="3" ng-controller="imageController">
 		<div class="row" style="padding: 30px;">
-			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
+		<!--  	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
@@ -202,20 +177,20 @@
 
 					</div>
 				</div>
-				<!--/panel-->
-			</div>
+			
+			</div> -->
 			<!--/col-->
 
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Los Angeles"><img
-							src="//placehold.it/600x400/454545/FFF" class="img-responsive"></a>
+						<img src="../hangoutamigosapp/images/sanfrancisco.png" class="img-responsive" ng-click="imageClick('San Francisco')">
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
-							<span class="font-semibold">Los Angeles</span>
+							<span class="font-semibold">San Francisco</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -229,12 +204,12 @@
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Denver"><img
-							src="//placehold.it/600x400/555/F2F2F2" class="img-responsive"></a>
+					<img src="../hangoutamigosapp/images/seattle.png" class="img-responsive" ng-click="imageClick('Seattle')">
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
-							<span class="font-semibold">Denver</span>
+							<span class="font-semibold">Seattle</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -245,7 +220,7 @@
 			</div>
 			<!--/col-->
 
-			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
+			<!--  <div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
@@ -260,21 +235,21 @@
 
 					</div>
 				</div>
-				<!--/panel-->
+			
 
-			</div>
+			</div>-->
 			<!--/col-->
 
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Florida"><img
-							src="//placehold.it/600x400/555/EEE" class="img-responsive"></a>
+						<img src="../hangoutamigosapp/images/losangeles.png" class="img-responsive" ng-click="imageClick('Los Angeles')"></a>
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
-							<span class="font-semibold">Florida</span>
+							<span class="font-semibold">Los Angeles</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -289,12 +264,12 @@
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Las Vegas"><img
-							src="//placehold.it/600x400/666/F4F4F4" class="img-responsive"></a>
+						<img src="../hangoutamigosapp/images/lasvegas.png" class="img-responsive" ng-click="imageClick('Las Vegas')">
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
 							<span class="font-semibold">Las Vegas</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -305,7 +280,7 @@
 			</div>
 			<!--/col-->
 
-			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
+		<!-- 	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
@@ -320,21 +295,21 @@
 
 					</div>
 				</div>
-				<!--/panel-->
+			
 
-			</div>
+			</div>-->
 			<!--/col-->
 
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Miami"><img
-							src="//placehold.it/600x400/666/F4F4F4" class="img-responsive"></a>
+						<img src="../hangoutamigosapp/images/miami.png" class="img-responsive" ng-click="imageClick('Miami')">
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
 							<span class="font-semibold">Miami</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -349,12 +324,12 @@
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
-						<a href="#" title="Chicago"><img
-							src="//placehold.it/600x400/666/F4F4F4" class="img-responsive"></a>
+						<img src="../hangoutamigosapp/images/chicago.png" class="img-responsive" ng-click="imageClick('Chicago')">
 					</div>
 					<div class="panel-body" align="middle">
 						<p>
 							<span class="font-semibold">Chicago</span>
+							<input type="text" id="textField" ng-model="search" style="display: none"/>
 						</p>
 						<p></p>
 
@@ -365,7 +340,7 @@
 			</div>
 			<!--/col-->
 
-			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
+		<!-- 	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
 					<div class="panel-thumbnail">
@@ -380,9 +355,9 @@
 
 					</div>
 				</div>
-				<!--/panel-->
+			
 
-			</div>
+			</div>-->
 			<!--/col-->
 		</div>
 	</div>

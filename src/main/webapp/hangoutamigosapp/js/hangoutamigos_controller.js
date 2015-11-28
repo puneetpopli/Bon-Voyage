@@ -57,6 +57,8 @@ hangoutamigosapp.config(function($routeProvider) {
 		templateUrl : 'search.html',
 		controller : 'restaurantController'
 	});
+	
+	
 
 	/*	$routeProvider
 
@@ -209,6 +211,21 @@ hangoutamigosapp.controller('searchController', function($scope, $http, $locatio
 
 });
 
+//Click on image controller
+hangoutamigosapp.controller('imageController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
+
+	console.log('imageController start');
+
+	$scope.imageClick = function(search) {
+		$scope.search = search;
+		$rootScope.search = $scope.search;
+		console.log($rootScope.search);
+		$location.path('/search');
+	};
+
+	console.log('imageController end');
+
+});
 
 //View Restaurant
 hangoutamigosapp.controller('restaurantController',
@@ -547,7 +564,7 @@ hangoutamigosapp.controller('restaurantController',
 			}
 			var map = new google.maps.Map(mapCanvas, mapOptions);
 
-			for(var m=0; m<=9; m++) {
+			for(var m=0; m<=4; m++) {
 				//console.log($rootScope.placeName[m]);
 				marker1 = new google.maps.Marker({
 					position: new google.maps.LatLng($rootScope.placeLat[m], $rootScope.placeLng[m]),
