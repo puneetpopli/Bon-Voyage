@@ -385,7 +385,7 @@ hangoutamigosapp.controller('restaurantController',
 			for(var i=0; i<=4; i++) {
 
 				if($rootScope.rating1[i]!==null) {
-					$rootScope.rating[i] =3.4;
+				
 					$rootScope.restaurantLat[i] = $rootScope.restaurantLat1[i];
 					$rootScope.restaurantLng[i] = $rootScope.restaurantLng1[i];
 					$rootScope.restaurantName[i] = $rootScope.restaurantName1[i];
@@ -412,6 +412,10 @@ hangoutamigosapp.controller('restaurantController',
 		}, function errorCallback(response) {
 
 		});
+		
+
+		//show div
+		$scope.showDiv1 = true;
 
 	};
 
@@ -551,6 +555,9 @@ hangoutamigosapp.controller('restaurantController',
 		}, function errorCallback(response) {
 
 		});
+		
+		//show div
+		$scope.showDiv2 = true;
 
 		//This will display the map with all the restaurants on the map
 		var marker2;
