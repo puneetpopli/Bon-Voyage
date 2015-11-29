@@ -196,6 +196,7 @@ public class GooglePlaceImpl implements GooglePlaceIntf{
 			nearByplaceType.setTypes(places.getTypes());
 			nearByplaceType.setRating(places.getRating());
 			nearByplaceType.setPrice_level(places.getPrice_level());
+			nearByplaceType.setPhotos(places.getPhotos());
 
 			nearByPlaceWithAnyTypeList.add(nearByplaceType);
 

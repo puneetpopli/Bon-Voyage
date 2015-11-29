@@ -1,6 +1,7 @@
 package com.hangout.amigos.dto;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 
 import com.hangout.amigos.dto.Place.Geometry;
@@ -32,7 +33,19 @@ public class NearByPlaceWithAnyType {
 	private Float rating;
 
 	private Integer price_level;
+	
+	private List<Photo> photos = Collections.emptyList();
 
+	
+	
+	
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
 
 	public Integer getPrice_level() {
 		return price_level;

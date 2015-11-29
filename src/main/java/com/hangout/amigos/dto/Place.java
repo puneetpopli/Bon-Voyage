@@ -91,6 +91,8 @@ public class Place {
 	private String vicinty;
 
 	private Float rating;
+	
+	private List<Photo> photos = Collections.emptyList();
 
 	/*
 	 * Following fields are required for restaurant
@@ -100,38 +102,58 @@ public class Place {
 	
 	private Integer price_level;
 	
+	//private List<Photo> photos;
+	
 	/*
 	 * Following fields are required for Particular Place Detail
 	 */
-	private  List<Review> reviews = Collections.emptyList();
+	//private  List<Review> reviews = Collections.emptyList();
 
 	private  List<AddressComponent> address_components = Collections.emptyList();
 	
 	private String formatted_address;
 
-	private String formatted_phone_number;
+	/*private String formatted_phone_number;
 	
-	private Integer international_phone_number;
+	private Integer international_phone_number;*/
 
 	private Integer utcOffset;
 
 	//This is the URL of the location on google maps
 	private URL url;
 
-	public List<Review> getReviews() {
+	/*public List<Review> getReviews() {
 		return reviews;
 	}
 
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
-	}
+	}*/
 
 	public List<AddressComponent> getAddress_components() {
 		return address_components;
 	}
 
+/*	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}*/
+
+	
+	
 	public void setAddress_components(List<AddressComponent> address_components) {
 		this.address_components = address_components;
+	}
+
+	public List<Photo> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
 	}
 
 	public String getFormatted_address() {
@@ -142,7 +164,7 @@ public class Place {
 		this.formatted_address = formatted_address;
 	}
 
-	public String getFormatted_phone_number() {
+	/*public String getFormatted_phone_number() {
 		return formatted_phone_number;
 	}
 
@@ -156,7 +178,7 @@ public class Place {
 
 	public void setInternational_phone_number(Integer international_phone_number) {
 		this.international_phone_number = international_phone_number;
-	}
+	}*/
 
 	public Integer getUtcOffset() {
 		return utcOffset;
