@@ -1,6 +1,5 @@
 
 
-
 <div ng-controller="restaurantController" ng-init="initRest()">
 	<!-- google maps -->
 	<script>
@@ -15,6 +14,9 @@
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
+
+
+
 
 	<!-- === MAIN Background === -->
 	<div class="slide story" id="search-slide-1" data-slide="1">
@@ -55,8 +57,7 @@
 
 				<!-- Thumbnail 1 -->
 				<div class="thumbnail">
-					<img ng-src="{{icon1[0]}}"
-						class="img-responsive">
+					<img ng-src="{{icon1[0]}}" class="img-responsive">
 					<div class="caption">
 						<h3>Restaurant 1</h3>
 						<p>
@@ -85,8 +86,7 @@
 
 				<!-- Thumbnail 2 -->
 				<div class="thumbnail">
-					<img ng-src="{{icon1[1]}}"
-						class="img-responsive">
+					<img ng-src="{{icon1[1]}}" class="img-responsive">
 					<div class="caption">
 						<h3>Restaurant 2</h3>
 						<p>
@@ -110,12 +110,11 @@
 						</div>
 					</div>
 				</div>
-	
-	
-			<!-- Thumbnail 3 -->
+
+
+				<!-- Thumbnail 3 -->
 				<div class="thumbnail">
-					<img ng-src="{{icon1[2]}}"
-						class="img-responsive">
+					<img ng-src="{{icon1[2]}}" class="img-responsive">
 					<div class="caption">
 						<h3>Restaurant 3</h3>
 						<p>
@@ -139,12 +138,11 @@
 						</div>
 					</div>
 				</div>
-	
-	
-		<!-- Thumbnail 4 -->
+
+
+				<!-- Thumbnail 4 -->
 				<div class="thumbnail">
-					<img ng-src="{{icon1[3]}}"
-						class="img-responsive">
+					<img ng-src="{{icon1[3]}}" class="img-responsive">
 					<div class="caption">
 						<h3>Restaurant 4</h3>
 						<p>
@@ -168,11 +166,10 @@
 						</div>
 					</div>
 				</div>
-		
-		<!-- Thumbnail 5 -->
+
+				<!-- Thumbnail 5 -->
 				<div class="thumbnail">
-					<img ng-src="{{icon1[4]}}"
-						class="img-responsive">
+					<img ng-src="{{icon1[4]}}" class="img-responsive">
 					<div class="caption">
 						<h3>Restaurant 5</h3>
 						<p>
@@ -196,10 +193,11 @@
 						</div>
 					</div>
 				</div>
-	
+
+
 				<div class="col-sm-12">
 					<div>
-						<button type="button" class="btn btn-success">
+						<button id="feed" type="button" class="btn btn-success">
 							<i class="icon icon-bar-chart icon-large">High Charts</i>
 						</button>
 					</div>
