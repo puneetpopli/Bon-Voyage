@@ -2,7 +2,7 @@
 
 <div ng-controller="restaurantController" ng-init="initRest()">
 	<!-- google maps -->
-	<script>
+	<!-- <script>
 		function initialize() {
 			var mapCanvas = document.getElementById('map');
 			var mapOptions = {
@@ -13,7 +13,7 @@
 			var map = new google.maps.Map(mapCanvas, mapOptions);
 		}
 		google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
+	</script> -->
 
 
 
@@ -48,159 +48,188 @@
 
 
 	<!-- Div 2 -->
-	<div class="slide story" id="search-slide-2" data-slide="2">
+	<div class="slide story" id="search-slide-2" data-slide="2" style="background-color: #E0E0E0;">
 		<div class="container" ng-show='showDiv1'>
-			<div class="row title-row">
-				<div class="col-12 font-thin">
-					<span class="font-semibold">Restaurants</span>
+			<div class="row content-row">
+				<div class="col-12">
+					<span class="font-semibold" style="font-size: 35px;">Restaurants</span>
 				</div>
 
 				<!-- Thumbnail 1 -->
-				<div class="thumbnail">
-					<img ng-src="{{icon1[0]}}" class="img-responsive">
-					<div class="caption">
-						<h3>Restaurant 1</h3>
-						<p>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							<span>{{vicinity1[0]}}</span>
-						</p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Restaurant Name</td>
-									<td>{{restaurantName1[0]}}</td>
-								</tr>
-								<tr>
-									<td>Rating</td>
-									<td>{{rating1[0]}}</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<div class="text-right">
-							<input class="btn btn-primary" value="Select" type="button">
+				<div class="col-12">
+					<div class="col-3 hidden-sm">&nbsp;</div>
+					<div class="thumbnail col-6">
+						<img ng-src="{{icon1[0]}}" class="img-responsive">
+						<div class="caption">
+							<h3>Restaurant 1</h3>
+							<p>
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+								<span>{{vicinity1[0]}}</span>
+							</p>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Restaurant Name</td>
+										<td>{{restaurantName1[0]}}</td>
+									</tr>
+									<tr>
+										<td>Rating</td>
+										<td>{{rating1[0]}}</td>
+									</tr>
+								</tbody>
+							</table>
+	
+							<div class="checkbox disabled">
+      							<label><input type="checkbox" value="" disabled>Select</label>
+    						</div>
+	
 						</div>
 					</div>
+					<div class="col-3 hidden-sm">&nbsp;</div>
 				</div>
 
 
 				<!-- Thumbnail 2 -->
-				<div class="thumbnail">
-					<img ng-src="{{icon1[1]}}" class="img-responsive">
-					<div class="caption">
-						<h3>Restaurant 2</h3>
-						<p>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							<span>{{vicinity1[1]}}</span>
-						</p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Restaurant Name</td>
-									<td>{{restaurantName1[1]}}</td>
-								</tr>
-								<tr>
-									<td>Rating</td>
-									<td>{{rating1[1]}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="text-right">
-							<input class="btn btn-primary" value="Select" type="button">
+				<div class="col-12">
+					<div class="col-3 hidden-sm">&nbsp;</div>
+					<div class="thumbnail col-6">
+						<img ng-src="{{icon1[1]}}" class="img-responsive">
+						<div class="caption">
+							<h3>Restaurant 2</h3>
+							<p>
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+								<span>{{vicinity1[1]}}</span>
+							</p>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Restaurant Name</td>
+										<td>{{restaurantName1[1]}}</td>
+									</tr>
+									<tr>
+										<td>Rating</td>
+										<td>{{rating1[1]}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="checkbox disabled">
+      							<label><input type="checkbox" value="" disabled>Select</label>
+    						</div>
 						</div>
 					</div>
+					<div class="col-3 hidden-sm">&nbsp;</div>
 				</div>
 
 
 				<!-- Thumbnail 3 -->
-				<div class="thumbnail">
-					<img ng-src="{{icon1[2]}}" class="img-responsive">
-					<div class="caption">
-						<h3>Restaurant 3</h3>
-						<p>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							<span>{{vicinity1[2]}}</span>
-						</p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Restaurant Name</td>
-									<td>{{restaurantName1[2]}}</td>
-								</tr>
-								<tr>
-									<td>Rating</td>
-									<td>{{rating1[2]}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="text-right">
-							<input class="btn btn-primary" value="Select" type="button">
+				<div class="col-12">
+					<div class="col-3 hidden-sm">&nbsp;</div>
+					<div class="thumbnail col-6">
+						<img ng-src="{{icon1[2]}}" class="img-responsive">
+						<div class="caption">
+							<h3>Restaurant 3</h3>
+							<p>
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+								<span>{{vicinity1[2]}}</span>
+							</p>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Restaurant Name</td>
+										<td>{{restaurantName1[2]}}</td>
+									</tr>
+									<tr>
+										<td>Rating</td>
+										<td>{{rating1[2]}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="checkbox disabled">
+      							<label><input type="checkbox" value="" disabled>Select</label>
+    						</div>
 						</div>
 					</div>
+					<div class="col-3 hidden-sm">&nbsp;</div>
 				</div>
+					
 
 
 				<!-- Thumbnail 4 -->
-				<div class="thumbnail">
-					<img ng-src="{{icon1[3]}}" class="img-responsive">
-					<div class="caption">
-						<h3>Restaurant 4</h3>
-						<p>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							<span>{{vicinity1[3]}}</span>
-						</p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Restaurant Name</td>
-									<td>{{restaurantName1[3]}}</td>
-								</tr>
-								<tr>
-									<td>Rating</td>
-									<td>{{rating1[3]}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="text-right">
-							<input class="btn btn-primary" value="Select" type="button">
+				<div class="col-12">
+					<div class="col-3 hidden-sm">&nbsp;</div>
+					<div class="thumbnail col-6">
+						<img ng-src="{{icon1[3]}}" class="img-responsive">
+						<div class="caption">
+							<h3>Restaurant 4</h3>
+							<p>
+								<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+								<span>{{vicinity1[3]}}</span>
+							</p>
+							<table class="table">
+								<tbody>
+									<tr>
+										<td>Restaurant Name</td>
+										<td>{{restaurantName1[3]}}</td>
+									</tr>
+									<tr>
+										<td>Rating</td>
+										<td>{{rating1[3]}}</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="checkbox disabled">
+      							<label><input type="checkbox" value="" disabled>Select</label>
+    						</div>
 						</div>
 					</div>
+					<div class="col-3 hidden-sm">&nbsp;</div>
 				</div>
 
 				<!-- Thumbnail 5 -->
-				<div class="thumbnail">
-					<img ng-src="{{icon1[4]}}" class="img-responsive">
-					<div class="caption">
-						<h3>Restaurant 5</h3>
-						<p>
-							<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-							<span>{{vicinity1[4]}}</span>
-						</p>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>Restaurant Name</td>
-									<td>{{restaurantName1[4]}}</td>
-								</tr>
-								<tr>
-									<td>Rating</td>
-									<td>{{rating1[4]}}</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="text-right">
-							<input class="btn btn-primary" value="Select" type="button">
+				<div class="col-12">
+					<div class="col-3 hidden-sm">&nbsp;</div>
+					<div class="col-12">
+						<div class="col-3 hidden-sm">&nbsp;</div>
+						<div class="thumbnail col-6">
+							<img ng-src="{{icon1[4]}}" class="img-responsive">
+							<div class="caption">
+								<h3>Restaurant 5</h3>
+								<p>
+									<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+									<span>{{vicinity1[4]}}</span>
+								</p>
+								<table class="table">
+									<tbody>
+										<tr>
+											<td>Restaurant Name</td>
+											<td>{{restaurantName1[4]}}</td>
+										</tr>
+										<tr>
+											<td>Rating</td>
+											<td>{{rating1[4]}}</td>
+										</tr>
+									</tbody>
+								</table>
+							<div class="checkbox disabled">
+      							<label><input type="checkbox" value="" disabled>Select</label>
+    						</div>
+							</div>
 						</div>
+						<div class="col-3 hidden-sm">&nbsp;</div>
 					</div>
+					<div class="col-3 hidden-sm">&nbsp;</div>
 				</div>
 
-
-				<div class="col-sm-12">
-					<div>
-						<button id="feed" type="button" class="btn btn-success">
-							<i class="icon icon-bar-chart icon-large">High Charts</i>
-						</button>
+				<div class="col-12">
+					<div class="col-4"></div>
+					<div class="col-4">
+						<div>
+							<button id="feed" type="button" class="btn btn-success">
+								<i class="icon-bar-chart" style="font-size: 85%;">High Charts</i>
+							</button>
+						</div>
 					</div>
+					<div class="col-4"></div>
 				</div>
 			</div>
 
@@ -212,7 +241,7 @@
 	<!-- Div 3 -->
 	<div class="slide story" id="search-slide-2" data-slide="3">
 		<div class="container" ng-show='showDiv2'>
-			<div class="row title-row">
+			<div class="row content-row">
 
 				<div class="col-12 font-thin">
 					<span class="font-semibold">Near By Places to</span> <span

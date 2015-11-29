@@ -236,7 +236,7 @@ public class GooglePlaceImpl implements GooglePlaceIntf{
 		result = restTemplate.getForObject(placeUrl, PlaceDetailResult.class);
 
 
-		PlaceDetail placeDetail = result.getResult(); 
+		PlaceDetail placeDetail = result.getPlaceDetailResult()[0]; 
 
 		ParticularPlaceDetail particularPlaceDetail = new ParticularPlaceDetail();
 		particularPlaceDetail.setGeometry(placeDetail.getGeometry());
