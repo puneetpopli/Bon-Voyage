@@ -96,20 +96,10 @@ public class Controller extends WebMvcConfigurerAdapter {
 		return new ResponseEntity<List<NearByPlaceWithAnyType>>(place, HttpStatus.OK);
 	}
 
-	/*
-	 * 4. Get details of a particular place
-	 */
-	@RequestMapping(value="/getplacedetail/placeid/{placeid}", method=RequestMethod.GET)
-	public ResponseEntity<List<ParticularPlaceDetail>> getNearByPlaceWithAnyType(@PathVariable("placeid") String placeId) {
-
-		List<ParticularPlaceDetail> place = googlePlace.getParticularPlaceDetail(placeId);
-
-		return new ResponseEntity<List<ParticularPlaceDetail>>(place, HttpStatus.OK);
-	}
 	
 	
 	/*
-	 * 5.  Get a restaurant when a user enter query. For e.g restaurants in san francisco
+	 * 4.  Get a restaurant when a user enter query. For e.g restaurants in san francisco
 	 */
 	@RequestMapping(value="/getplace/textsearch/{query}", method=RequestMethod.GET)
 	public ResponseEntity<List<PlaceTextSearch>> getTextSearch(@PathVariable("query") String  query ) {
@@ -120,7 +110,7 @@ public class Controller extends WebMvcConfigurerAdapter {
 	
 	
 	/*
-	 * 6. Create User
+	 * 5. Create User
 	 */
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/createuser", method = RequestMethod.POST)
@@ -139,7 +129,7 @@ public class Controller extends WebMvcConfigurerAdapter {
 	}
 
 	/*
-	 * 7. Get a user
+	 * 6. Get a user
 	 * 
 	 */
 
@@ -152,7 +142,7 @@ public class Controller extends WebMvcConfigurerAdapter {
 
 
 	/*
-	 * 8. Login
+	 * 7. Login
 	 */
 
 	@RequestMapping("/login")
@@ -172,7 +162,7 @@ public class Controller extends WebMvcConfigurerAdapter {
 
 
 	/*
-	 * 9. Logout
+	 * 8. Logout
 	 */
 	@RequestMapping("/logout")
 	@ResponseBody
