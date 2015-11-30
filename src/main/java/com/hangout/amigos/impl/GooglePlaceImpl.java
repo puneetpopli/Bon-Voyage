@@ -37,10 +37,10 @@ public class GooglePlaceImpl implements GooglePlaceIntf{
 
 	private static final String TEXT_SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json";
 
-	//private static String apiKey="AIzaSyADd_jadsjrgHfNgY7XXXooYN8QLRrBWZA";
+	private static String apiKey="AIzaSyADd_jadsjrgHfNgY7XXXooYN8QLRrBWZA";
 	
 	//Gaurav's key
-	private static String apiKey = "AIzaSyDM_okhmwbJ3hiDkzLMtpl0yBKy5mivusc";
+//	private static String apiKey = "AIzaSyDM_okhmwbJ3hiDkzLMtpl0yBKy5mivusc";
 
 
 	/*
