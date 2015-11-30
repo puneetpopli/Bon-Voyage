@@ -16,6 +16,8 @@ public interface GooglePlaceIntf {
 	
 	public List<NearByPlaceWithAnyType> getNearByPlaceWithAnyType(double latitude, double longitude, int radius, String type);
 	
+	public List<ParticularPlaceDetail> getParticularPlaceDetail(String placeId);
+	
 	public List<PlaceTextSearch> getRestaurantBasedOnQuery(String query);
 	
 }
