@@ -35,11 +35,6 @@ hangoutamigosapp.factory('dataSharing', function() {
 		}	
 	};
 
-//	return {
-//	set : set,
-//	get : get
-//	}
-
 });
 
 
@@ -56,44 +51,12 @@ hangoutamigosapp.config(function($routeProvider) {
 	.when('/search', {
 		templateUrl : 'search.html',
 		controller : 'restaurantController'
+	})
+
+	.when('/itinerary', {
+		templateUrl : 'itinerary.html',
+		controller : 'itineraryController'
 	});
-	
-	
-
-	/*	$routeProvider
-
-	.when('/', {
-		templateUrl : 'home.html',
-		controller : 'homeController'
-	})
-
-	.when('/', {
-		templateUrl : 'home.html',
-		controller : 'loginController'
-	})
-
-	.when('/', {
-		templateUrl : 'home.html',
-		controller : 'registerController'
-	})
-
-
-	.when('/', {
-		templateUrl : 'home.html',
-		controller : 'searchController'
-	})
-
-
-//	.when('/', {
-//	templateUrl : 'index.html',
-//	controller : 'searchController'
-//	})
-
-
-	.when('/search', {
-		templateUrl : 'search.html',
-		controller : 'restaurantController'
-	})*/
 
 });
 
@@ -212,6 +175,38 @@ hangoutamigosapp.controller('searchController', function($scope, $http, $locatio
 });
 
 
+//Proceed to Itinerary page Controller
+hangoutamigosapp.controller('proceedController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
+
+	console.log('proceedController start');
+
+	$scope.proceed = function() {
+
+
+		//$rootScope.search = $scope.search;
+		$location.path('/itinerary');
+
+	};
+
+	console.log('proceedController end');
+
+});
+
+
+//Itinerary page Controller
+hangoutamigosapp.controller('itineraryController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
+
+	console.log('itineraryController start');
+
+	console.log('Inside itinerary controller - Name ' + $rootScope.resultName);
+	console.log('Inside itinerary controller - Vicinity ' + $rootScope.resultVicnity);
+
+
+	console.log('itineraryController end');
+
+});
+
+
 
 
 //Click on image controller
@@ -266,7 +261,7 @@ hangoutamigosapp.controller('restaurantController',
 	$rootScope.placeLat1 = [];
 	$rootScope.placeLng1 = [];
 	$rootScope.placeIcon1 = [];
-	
+
 	$rootScope.placeName2 = [];
 	$rootScope.placeVicinity2 = [];
 	$rootScope.nearByPlaceId2 = [];
@@ -282,9 +277,9 @@ hangoutamigosapp.controller('restaurantController',
 	$rootScope.placeLng = [];
 	$rootScope.placeIcon = [];
 
-	
-	
-	
+
+
+
 
 	$scope.initRest = function(){
 
@@ -393,7 +388,7 @@ hangoutamigosapp.controller('restaurantController',
 			for(var i=0; i<=4; i++) {
 
 				if($rootScope.rating1[i]!==null) {
-				
+
 					$rootScope.restaurantLat[i] = $rootScope.restaurantLat1[i];
 					$rootScope.restaurantLng[i] = $rootScope.restaurantLng1[i];
 					$rootScope.restaurantName[i] = $rootScope.restaurantName1[i];
@@ -422,8 +417,8 @@ hangoutamigosapp.controller('restaurantController',
 		});
 		//show div
 		$scope.showDiv1 = true;
-		
-		
+
+
 	};
 
 	//This will display the map with all the restaurants on the map
@@ -449,40 +444,40 @@ hangoutamigosapp.controller('restaurantController',
 
 	};
 
-	
+
 
 	/*************************************************************/
-	
+
 	//Store the restaurants selected by user
 	$rootScope.resultName = [];
 	$rootScope.resultVicnity = [];
-	
+
 	console.log('Inside save function');
-	
+
 	$scope.save = function(name, vicinity) {
-	
+
 		$rootScope.resultName.push(name);
 		$rootScope.resultVicnity.push(vicinity);	
-		console.log('Name ' + $rootScope.resultPlaceName);
+		console.log('Name ' + $rootScope.resultName);
 		console.log('Vicinity ' + $rootScope.resultVicnity);
 	}
-	
-	
+
+
 	//Store the near by places selected by user
 	$rootScope.resultPlaceName = [];
 	$rootScope.resultPlaceVicnity = [];
-	
+
 	console.log('Inside save function');
-	
+
 	$scope.savePlace = function(name, vicinity) {
-	
+
 		$rootScope.resultPlaceName.push(name);
 		$rootScope.resultPlaceVicnity.push(vicinity);
 		console.log('Name ' + $rootScope.resultPlaceName);
 		console.log('Vicinity ' + $rootScope.resultPlaceVicnity);
-		
+
 	}
-	
+
 
 	/************************************************************/
 
@@ -561,9 +556,9 @@ hangoutamigosapp.controller('restaurantController',
 			var length = JSON.stringify(response.data.length);
 
 			console.log(response.data);
-			
-			
-			
+
+
+
 			//Storing all the values in 1 array
 			for(var l=0; l<response.data.length; l++) {
 				if(typeof response.data[l].icon != undefined || typeof response.data[l].place_id != undefined 
@@ -595,10 +590,10 @@ hangoutamigosapp.controller('restaurantController',
 		}, function errorCallback(response) {
 
 		});
-		
+
 		//show div
 		$scope.showDiv2 = true;
-		
+
 		//This will display the map with all the restaurants on the map
 		var marker2;
 		function initializePlaceMap(){
@@ -622,11 +617,11 @@ hangoutamigosapp.controller('restaurantController',
 
 
 		}; //map ends here
-		
-		
-		
+
+
+
 		/***************************/
-		
+
 
 		/*************************/
 
