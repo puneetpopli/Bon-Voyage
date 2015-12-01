@@ -450,7 +450,10 @@ hangoutamigosapp.controller('restaurantController',
 	};
 
 	
+
 	/*************************************************************/
+	
+	//Store the restaurants selected by user
 	$rootScope.resultName = [];
 	$rootScope.resultVicnity = [];
 	
@@ -459,13 +462,27 @@ hangoutamigosapp.controller('restaurantController',
 	$scope.save = function(name, vicinity) {
 	
 		$rootScope.resultName.push(name);
-		$rootScope.resultVicnity.push(vicinity);
-
+		$rootScope.resultVicnity.push(vicinity);	
+		console.log('Name ' + $rootScope.resultPlaceName);
+		console.log('Vicinity ' + $rootScope.resultVicnity);
+	}
+	
+	
+	//Store the near by places selected by user
+	$rootScope.resultPlaceName = [];
+	$rootScope.resultPlaceVicnity = [];
+	
+	console.log('Inside save function');
+	
+	$scope.savePlace = function(name, vicinity) {
+	
+		$rootScope.resultPlaceName.push(name);
+		$rootScope.resultPlaceVicnity.push(vicinity);
+		console.log('Name ' + $rootScope.resultPlaceName);
+		console.log('Vicinity ' + $rootScope.resultPlaceVicnity);
 		
 	}
-
-
-
+	
 
 	/************************************************************/
 
@@ -581,7 +598,7 @@ hangoutamigosapp.controller('restaurantController',
 		
 		//show div
 		$scope.showDiv2 = true;
-
+		
 		//This will display the map with all the restaurants on the map
 		var marker2;
 		function initializePlaceMap(){
@@ -605,6 +622,11 @@ hangoutamigosapp.controller('restaurantController',
 
 
 		}; //map ends here
+		
+		
+		
+		/***************************/
+		
 
 		/*************************/
 
