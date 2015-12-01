@@ -92,6 +92,7 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
+			console.log('User added');
 			//$scope.success = "User Added Successfully";
 		});
 		response.error(function(data, status, headers, config) {
