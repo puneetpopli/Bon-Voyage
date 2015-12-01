@@ -1,21 +1,10 @@
-
-
-
-<!-- Added for Date Picker 
-<link
-	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
-	rel="stylesheet" type="text/css" />
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
-	$(document).ready(function() {
-		$("#fromdatepicker").datepicker();
-		$("#todatepicker").datepicker();
-	});
+$(document).ready(function() {
+$("#fromdatepicker").datepicker();
+$("#todatepicker").datepicker();
+});
 </script>
- -->
+
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
 function googleTranslateElementInit() {
@@ -24,20 +13,23 @@ function googleTranslateElementInit() {
 </script>
 
 <div ng-controller="itineraryController">
+
 	<div class="slide story" id="slide-5">
+	<div id="google_translate_element"></div>
 		<div class="container">
 			<div class="row title-row">Select your Itinerary</div>
+			
 			<div class="row content-row">
-			<div id="google_translate_element"></div>
-				<!-- 		<form>
+			
+				<form>
 					<span class="font-semibold" style="font-size: 20px;">From</span>
 					&nbsp;<input id="fromdatepicker" class="font-semibold" /> <span
 						class="font-semibold" style="font-size: 20px;"> to </span><input
 						id="todatepicker" class="font-semibold" />&nbsp;
 					<button class="btn btn-danger" aria-expanded="false">
-						<span class="font-semibold">GO</span>
+						<span class="font-semibold">Save</span>
 					</button>
-				</form>  -->
+				</form> 
 			</div>
 		</div>
 	</div>
