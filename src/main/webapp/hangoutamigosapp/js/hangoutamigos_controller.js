@@ -198,10 +198,87 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 
 	console.log('itineraryController start');
 
-	console.log('Inside itinerary controller - Name ' + $rootScope.resultName);
-	console.log('Inside itinerary controller - Vicinity ' + $rootScope.resultVicnity);
+	/*
+	 * displaying restaurant thumbnail
+	 */
+	var len = $rootScope.resultName.length;
+	
+	
+	if(len == 1) {
+		$scope.showThumbanil0 = true;
+	}
+	else if(len == 2) {
+		$scope.showThumbanil0 = true;
+		$scope.showThumbanil1 = true;
+	}
+	else if(len == 3) {
+		$scope.showThumbanil0 = true;
+		$scope.showThumbanil1 = true;
+		$scope.showThumbanil2 = true;
+	}
+	else if(len == 4) {
+		$scope.showThumbanil0 = true;
+		$scope.showThumbanil1 = true;
+		$scope.showThumbanil2 = true;
+		$scope.showThumbanil3 = true;
+	}
+	else if(len == 5) {
+		$scope.showThumbanil0 = true;
+		$scope.showThumbanil1 = true;
+		$scope.showThumbanil2 = true;
+		$scope.showThumbanil3 = true;
+		$scope.showThumbanil4 = true;
+	}
+	//len==6
+	else if(len==6){
+		$scope.showThumbanil0 = true;
+		$scope.showThumbanil1 = true;
+		$scope.showThumbanil2 = true;
+		$scope.showThumbanil3 = true;
+		$scope.showThumbanil4 = true;
+		$scope.showThumbanil5 = true;
+	}
+	
+	/*
+	 * displaying places thumbnail
+	 */
+	var len1 = $rootScope.resultPlaceName.length;
+	
+	if(len1 == 1) {
+		$scope.showThumbanil7 = true;
+	}
+	else if(len1 == 2) {
+		$scope.showThumbanil7 = true;
+		$scope.showThumbanil8 = true;
+	}
+	else if(len1 == 3) {
+		$scope.showThumbanil7 = true;
+		$scope.showThumbanil8 = true;
+		$scope.showThumbanil9 = true;
+	}
+	else if(len1 == 4) {
+		$scope.showThumbanil7 = true;
+		$scope.showThumbanil8 = true;
+		$scope.showThumbanil9 = true;
+		$scope.showThumbanil10 = true;
+	}
+	else if(len1 == 5) {
+		$scope.showThumbanil7 = true;
+		$scope.showThumbanil8 = true;
+		$scope.showThumbanil9 = true;
+		$scope.showThumbanil10 = true;
+		$scope.showThumbanil11 = true;
+	}
 
-
+	else if(len1 == 6){
+		$scope.showThumbanil7 = true;
+		$scope.showThumbanil8 = true;
+		$scope.showThumbanil9 = true;
+		$scope.showThumbanil10 = true;
+		$scope.showThumbanil11 = true;
+		$scope.showThumbanil12 = true;
+	}
+	
 	console.log('itineraryController end');
 
 });
