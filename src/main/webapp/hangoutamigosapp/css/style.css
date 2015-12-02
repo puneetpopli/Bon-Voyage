@@ -383,9 +383,10 @@ body {
 	margin: 0 auto;
 	overflow: hidden;
 	padding: 0;
-	text-align: left;
+	/* text-align: left; */
 	width: 100%;
 	font-size: 20px;
+	color: white;
 	
 }
 	
@@ -395,6 +396,7 @@ body {
 		margin: 0;
 		padding: 0;
 		width: 452px;
+		
 	}
 
 	#slide-3 a,
@@ -403,6 +405,18 @@ body {
 		height: 100%;
 		margin: 0 auto;
 		width: 100%;
+	}
+	
+	/* New addition for sizing font inside the thumbnail */
+	#slide-3 .panel-body {
+		font-size: 20px;
+	}
+	
+	/* New addition to make the panel boday transparent */
+	#slide-3 .panel {
+        background: none;
+        /* border-color: transparent; */
+        border: 0; 
 	}
 	
 @media (max-width: 991px) {

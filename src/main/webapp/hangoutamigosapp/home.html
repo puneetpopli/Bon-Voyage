@@ -83,29 +83,31 @@
 		<div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-thin">
-					Weekend or not, put your travel shoes on and get set. But <span
-						class="font-semibold">Where to?</span> Yes, your <span
-						class="font-semibold">amigos</span> are here to help you with
-					that.
+					Your amigos will help you <span class="font-semibold">explore</span>
 				</div>
 			</div>
 			<!-- /row -->
-			<div class="row title-row">
+			<div class="row subtitle-row">
 				<div class="container" style="width: 600px; margin: 50px auto;">
 					<form class="searchbox">
-						<input type="search" placeholder="Search your next adventure"
+						<input type="search" placeholder="search your next adventure"
 							name="search" ng-model="search" class="searchbox-input">
 					</form>
 				</div>
-				<div ng-click="searchform_search()">
-					<i class="icon icon-search"></i>
+				<div ng-click="searchform_search()"><i class="icon icon-search"></i>
 				</div>
-				<div>
-					<span style="color: red"><font size="2">{{errormsg}}</font></span>
-				</div>
-
 			</div>
-
+			<div class="row content-row" style="padding: 0px;">
+				<div><i class="icon-arrow-up" style="font-size: 190%;"></i>
+				</div>
+				<div><span style="font-size: 40px;">:</span></div>
+				<div><span class="font-thin" style="font-size: 25px;">click to unveil the magic </span>
+				</div>
+			</div>
+			<!-- <div class="row line-row">
+				<div>&nbsp;</div>
+				<div>&nbsp;</div>
+			</div>/row -->
 		</div>
 	</div>
 	<!-- /slide2 -->
@@ -114,6 +116,10 @@
 	<div class="slide story" id="slide-3" data-slide="3"
 		ng-controller="imageController">
 		<div class="row" style="padding: 30px;">
+			<div>
+				<span class="font-thin">You belong</span> <span class="font-semibold">everywhere</span><span class="font-thin">, discover new places.</span>
+			</div>
+			
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
