@@ -25,6 +25,8 @@ public class LoginImpl implements LoginIntf{
 		try{
 			BeanUtils.copyProperties(logindao, loginDTO);
 			//check username and password
+			
+			
 			//uncomment this when mongo starts working and in if change logindao to login
 			//Login login = loginDao.getObject(logindao.getEmail(), logindao.getPassword());
 			if(logindao == null){
@@ -39,6 +41,7 @@ public class LoginImpl implements LoginIntf{
 				loginList.add(logindao);
 				
 				//loginDao.updateObject(login);
+				
 				//set session id in header
 				loginDTO.setSessionId(Integer.toString(sessionId));
 				
