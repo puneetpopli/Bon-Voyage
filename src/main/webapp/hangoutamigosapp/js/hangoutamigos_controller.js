@@ -92,7 +92,10 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
+			$scope.displayname = 'Hello, Amigo';
+			$rootScope.currentUserSignedIn = true;
 			$scope.success = "Thanks for signing up Amigo!"
+				$location.url('#/');
 			
 		});
 		response.error(function(data, status, headers, config) {
@@ -135,8 +138,10 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
+			$scope.displayname = 'Hello, Amigo';
+			$rootScope.currentUserSignedIn = true;
 			$scope.success = "Login Successful!"
-			$location.url('/');
+			$location.url('#/');
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
@@ -148,9 +153,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		});
 	};
 
-	$scope.clickRegister = function() {
-		$location.url('/register');
-	}
+	
 
 	console.log('loginController end');
 });
@@ -467,7 +470,7 @@ hangoutamigosapp.controller('restaurantController',
 				}
 			}
 
-			for(var i=0; i<=4; i++) {
+			for(var i=0; i<=5; i++) {
 
 				if($rootScope.rating1[i]!==null) {
 
@@ -514,13 +517,21 @@ hangoutamigosapp.controller('restaurantController',
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 		var map = new google.maps.Map(mapCanvas, mapOptions);
-
-		for(var k=0; k<=4; k++) {
+		var infowindow = new google.maps.InfoWindow();
+		for(var k=0; k<=5; k++) {
 			marker1 = new google.maps.Marker({
 				position: new google.maps.LatLng($rootScope.restaurantLat[k], $rootScope.restaurantLng[k]),
 				map: map,
 				animation: google.maps.Animation.DROP
 			});
+			
+			  google.maps.event.addListener(marker1, 'click', (function(marker1, k) {
+	                return function() {
+	                infowindow.setContent($rootScope.restaurantName1[k]);
+	                infowindow.open(map, marker1);
+	              }
+	              })(marker1, k));
+			
 		}
 
 
@@ -612,7 +623,7 @@ hangoutamigosapp.controller('restaurantController',
 
 
 
-			for(var i=0; i<=4; i++) {
+			for(var i=0; i<=5; i++) {
 				$rootScope.nearByPlaceId[i] = $rootScope.nearByPlaceId1[i];
 				$rootScope.placeName[i] = $rootScope.placeName1[i];
 				$rootScope.placeIcon[i] = $rootScope.placeIcon1[i];
@@ -683,19 +694,30 @@ hangoutamigosapp.controller('restaurantController',
 			console.log('in initializePlaceMap');
 			var mapOptions = {
 					center: new google.maps.LatLng($scope.latLong[1], $scope.latLong[0]),
-					zoom: 11,
+					zoom: 12,
 					mapTypeId: google.maps.MapTypeId.ROADMAP
 			}
 			var map = new google.maps.Map(mapCanvas, mapOptions);
 
-			for(var m=0; m<=4; m++) {
+			for(var m=0; m<=2; m++) {
 				//console.log($rootScope.placeName[m]);
 				marker1 = new google.maps.Marker({
-					position: new google.maps.LatLng($rootScope.placeLat[m], $rootScope.placeLng[m]),
+					position: new google.maps.LatLng($rootScope.placeLat1[m], $rootScope.placeLng1[m]),
 					map: map,
 					animation: google.maps.Animation.DROP
 				});
+				
 			}
+			for(var p=0; p<=2; p++) {
+				//console.log($rootScope.placeName[m]);
+				marker1 = new google.maps.Marker({
+					position: new google.maps.LatLng($rootScope.placeLat2[p], $rootScope.placeLng2[p]),
+					map: map,
+					animation: google.maps.Animation.DROP
+				});
+				
+			}
+
 
 
 		}; //map ends here
@@ -722,4 +744,5 @@ $scope.scrollTo = function(id) {
     //reset to old to keep any additional routing logic from kicking in
     $location.hash(old);
 };
+
 });
