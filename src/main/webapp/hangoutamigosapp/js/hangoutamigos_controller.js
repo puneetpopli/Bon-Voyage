@@ -92,10 +92,8 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
-			$scope.displayname = 'Hello, Amigo';
-			$rootScope.currentUserSignedIn = true;
 			$scope.success = "Thanks for signing up Amigo!"
-				$location.url('#/');
+				//$location.url('#/');
 			
 		});
 		response.error(function(data, status, headers, config) {
@@ -138,10 +136,8 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
-			$scope.displayname = 'Hello, Amigo';
-			$rootScope.currentUserSignedIn = true;
 			$scope.success = "Login Successful!"
-			$location.url('#/');
+			
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
@@ -190,7 +186,6 @@ hangoutamigosapp.controller('proceedController', function($scope, $http, $locati
 
 	$scope.proceed = function() {
 
-
 		//$rootScope.search = $scope.search;
 		$location.path('/itinerary');
 
@@ -205,6 +200,16 @@ hangoutamigosapp.controller('proceedController', function($scope, $http, $locati
 hangoutamigosapp.controller('itineraryController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
 
 	console.log('itineraryController start');
+	
+	
+	$scope.go = function(from, to) {
+		
+		$rootScope.from = from;
+		$rootScope.to = to;
+		$scope.showItineraryDiv = true;
+		console.log('from ' + $rootScope.from);
+		
+	}
 
 	/*
 	 * displaying restaurant thumbnail

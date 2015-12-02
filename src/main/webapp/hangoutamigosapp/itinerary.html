@@ -5,7 +5,8 @@ $("#todatepicker").datepicker();
 });
 </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,mr,pa,te', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
@@ -15,25 +16,30 @@ function googleTranslateElementInit() {
 <div ng-controller="itineraryController">
 
 	<div class="slide story" id="slide-5">
-	<div id="google_translate_element"></div>
+		<div id="google_translate_element"></div>
 		<div class="container">
 			<div class="row title-row">Select your Itinerary</div>
-			
+
 			<div class="row content-row">
-			
+
 				<form>
 					<span class="font-semibold" style="font-size: 20px;">From</span>
-					&nbsp;<input id="fromdatepicker" class="font-semibold" /> <span
-						class="font-semibold" style="font-size: 20px;"> to </span><input
-						id="todatepicker" class="font-semibold" />&nbsp;
-					<button class="btn btn-danger" aria-expanded="false">
-						<span class="font-semibold">Save</span>
+					&nbsp;<input id="fromdatepicker" class="font-semibold"
+						name="from_date" ng-model="from_date" />
+
+					<span class ="font-semibold" style="font-size: 20px;" name="to_date"
+									ng-model="to_date">
+					To </span>
+					<input id="todatepicker" class="font-semibold" />&nbsp;
+					<button class="btn btn-danger" aria-expanded="false"
+						ng-click="go(from_date, to_date)">
+						<span class="font-semibold">Go</span>
 					</button>
-				</form> 
+				</form>
 			</div>
 		</div>
 	</div>
-	<div class="slide story" id="slide-2">
+	<div class="slide story" id="slide-2" ng-show='showItineraryDiv'>
 		<div class="container">
 			<div class="row subtitle-row">
 				<div>
@@ -316,7 +322,7 @@ function googleTranslateElementInit() {
 									<tbody>
 										<tr>
 											<td>Place</td>
-											<td>{{resultPlaceName[5]}}</td>										
+											<td>{{resultPlaceName[5]}}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -331,5 +337,10 @@ function googleTranslateElementInit() {
 		</div>
 		<!-- end of container -->
 	</div>
+	<br>
+
+
 </div>
 
+
+<div ng-include src="'footer.html'"></div>
