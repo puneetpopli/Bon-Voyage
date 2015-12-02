@@ -21,59 +21,6 @@
 </script>
 
 <div ng-controller="homeController">
-	<!-- <div class="navbar navbar-fixed-top" data-activeslide="1">
-		<div class="container">
-
-			
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-responsive-collapse">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-
-
-			<div class="nav-collapse collapse navbar-responsive-collapse">
-				<ul class="nav row">
-					<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1"
-						href="#index" title="Next Section"><span
-							class="icon icon-home"></span> <span class="text">HOME</span></a></li>
-					<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2"
-						href="#index" title="Next Section"><span
-							class="icon icon-search"></span> <span class="text">SEARCH</span></a></li>
-					<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3"
-						href="#index" title="Next Section"><span
-							class="icon icon-picture"></span> <span class="text">HOT
-								DESTINATIONS</span></a></li>
-					<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4"
-						href="#index" title="Next Section"><span
-							class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
-					<li data-slide="5" class="col-12 col-sm-2"><a id="menu-link-5"
-						href="#slide-5" title="Next Section"><span
-							class="icon icon-heart"></span> <span class="text">CLIENTS</span></a></li
-					<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6"
-						href="#index" title="Next Section"><span
-							class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>
-
-					<li class="col-12 col-sm-1"><a data-toggle="modal"
-						data-target="#myModal1" id="menu-link-7" href="#/"
-						title="Next Section"><span class="icon icon-user"></span> <span
-							class="text">LOGIN</span></a></li>
-					<li class="col-12 col-sm-1"><a href="signup.html"
-						title="Next Section"> <a data-toggle="modal"
-							data-target="#myModal" id="menu-link-8" href="#index"
-							title="Next Section"><span class="icon icon-chevron-down"></span>
-								<span class="text">SIGN UP</span></a></li>
-				</ul>
-				<div class="row">
-					<div class="col-sm-2 active-menu"></div>
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-/.navbar -->
-
 
 
 	<!-- === Arrows === -->
@@ -153,6 +100,10 @@
 				<div ng-click="searchform_search()">
 					<i class="icon icon-search"></i>
 				</div>
+				<div>
+					<span style="color: red"><font size="2">{{errormsg}}</font></span>
+				</div>
+
 			</div>
 
 		</div>
@@ -163,25 +114,6 @@
 	<div class="slide story" id="slide-3" data-slide="3"
 		ng-controller="imageController">
 		<div class="row" style="padding: 30px;">
-			<!--  	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
-
-				<div class="panel panel-default">
-					<div class="panel-thumbnail">
-						<a href="#" title="San Francisco"><img
-							src="//placehold.it/600x400/444/F8F8F8" class="img-responsive"></a>
-					</div>
-					<div class="panel-body" align="middle">
-						<p>
-							<span class="font-semibold">San Francisco</span>
-						</p>
-						<p></p>
-
-					</div>
-				</div>
-			
-			</div> -->
-			<!--/col-->
-
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
 				<div class="panel panel-default">
@@ -222,27 +154,6 @@
 				<!--/panel-->
 
 			</div>
-			<!--/col-->
-
-			<!--  <div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
-
-				<div class="panel panel-default">
-					<div class="panel-thumbnail">
-						<a href="#" title="Dallas"><img
-							src="//placehold.it/600x400/555/FFF" class="img-responsive"></a>
-					</div>
-					<div class="panel-body" align="middle">
-						<p>
-							<span class="font-semibold">Dallas</span>
-						</p>
-						<p></p>
-
-					</div>
-				</div>
-			
-
-			</div>-->
-			<!--/col-->
 
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
@@ -284,27 +195,6 @@
 				<!--/panel-->
 
 			</div>
-			<!--/col-->
-
-			<!-- 	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
-
-				<div class="panel panel-default">
-					<div class="panel-thumbnail">
-						<a href="#" title="New York"><img
-							src="//placehold.it/600x400/666/F4F4F4" class="img-responsive"></a>
-					</div>
-					<div class="panel-body" align="middle">
-						<p>
-							<span class="font-semibold">New York</span>
-						</p>
-						<p></p>
-
-					</div>
-				</div>
-			
-
-			</div>-->
-			<!--/col-->
 
 			<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
 
@@ -346,27 +236,6 @@
 				<!--/panel-->
 
 			</div>
-			<!--/col-->
-
-			<!-- 	<div class="col-12 col-sm-4 col-lg-2 col-xs-6" style="padding: 30px;">
-
-				<div class="panel panel-default">
-					<div class="panel-thumbnail">
-						<a href="#" title="Phoenix"><img
-							src="//placehold.it/600x400/666/F4F4F4" class="img-responsive"></a>
-					</div>
-					<div class="panel-body" align="middle">
-						<p>
-							<span class="font-semibold">Phoenix</span>
-						</p>
-						<p></p>
-
-					</div>
-				</div>
-			
-
-			</div>-->
-			<!--/col-->
 		</div>
 	</div>
 	<!-- /slide3 -->
@@ -388,73 +257,13 @@
 			</div>
 			<!-- /row -->
 
-			<div class="row subtitle-row">
-				<!--div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-10 font-light">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</div>
-				<div class="col-sm-1 hidden-sm">&nbsp;</div-->
+			<div class="row subtitle-row"></div>
 
-			</div>
-			<!-- /row -->
-			<!--div class="row content-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-2">
-					<p><i class="icon icon-bolt"></i></p>
-					<h2 class="font-thin">Listening to<br><span class="font-semibold" >your needs</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-			<!--div class="col-12 col-sm-2">
-					<p><i class="icon icon-cog"></i></p>
-					<h2 class="font-thin">Project<br><span class="font-semibold">discovery</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-			<!--div class="col-12 col-sm-2">
-					<p><i class="icon icon-cloud"></i></p>
-					<h2 class="font-thin">Storming<br><span class="font-semibold">our brains</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-			<!--div class="col-12 col-sm-2">
-					<p><i class="icon icon-map-marker"></i></p>
-					<h2 class="font-thin">Getting<br><span class="font-semibold">there</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-			<!--div class="col-12 col-sm-2">
-					<p><i class="icon icon-gift"></i></p>
-					<h2 class="font-thin">Delivering<br><span class="font-semibold">the product</span></h2>
-					<h4 class="font-thin">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h4>
-				</div><!-- /col12 -->
-			<!--div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
 
 		</div>
-		<!-- /container -->
-	</div>
-	<!-- /slide4 -->
 
-	<!-- === Slide 5 === -->
-	<!--div class="slide story" id="slide-5" data-slide="5">
-		<div class="container">
-			<div class="row title-row">
-				<div class="col-12 font-thin"><span class="font-semibold">Clients</span> we’ve worked with</div>
-			</div><!-- /row -->
-	<!--div class="row line-row">
-				<div class="hr">&nbsp;</div>
-			</div><!-- /row -->
-	<!--div class="row subtitle-row">
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-10 font-light">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. <br/><br/> The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero.</div>
-				<div class="col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-	<!--div class="row content-row">
-				<div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
-				<div class="col-12 col-sm-2"><img src="images/client01.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="images/client02.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="images/client03.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="images/client04.png" alt=""></div>
-				<div class="col-12 col-sm-2"><img src="images/client05.png" alt=""></div>
-				<div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>
-			</div><!-- /row -->
-	<!--/div><!-- /container -->
-	<!--/div><!-- /slide5 -->
+	</div>
+
 
 	<!-- === Slide 6 / Contact === -->
 	<div class="slide story" id="slide-6" data-slide="6">
@@ -533,31 +342,59 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="modalLabel1">Login</h4>
-					<p>or</p>
+					<h4 class="modal-title" id="modalLabel1">
+						<strong>Login</strong>
+					</h4>
+					<p>OR</p>
 					<div class="fb-login-button" data-max-rows="1" data-size="large"
 						data-show-faces="false" data-auto-logout-link="false">Sign
-						up with Facebook</div>
+						in with Facebook</div>
 				</div>
-				<div class="modal-body"
-					style="display: block; height: 100%; max-height: 590px;">
-					<input class="form-control" type="text" id="emailaddress1"
-						name="loginform_email" ng-model="loginform_email"
-						placeholder="Email Address" style="width: 290px"><br>
-					<input class="form-control" type="password" id="password1"
-						name="loginform_password" ng-model="loginform_password"
-						placeholder="Password" style="width: 290px">
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger"
-						ng-click="loginform_login(loginform_email, loginform_password)"
-						style="width: 290px; float: left" id="login">Log In</button>
-					<br> <br> <br>
-					<p style="float: left">
-						Don't have an account? <a style="color: red">Sign up</a>
-					</p>
-					<!--  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-				</div>
+				<form name="loginform">
+					<div class="modal-body"
+						style="display: block; height: 100%; max-height: 590px;">
+
+						<input class="form-control" type="email" id="emailaddress1"
+							name="loginform_email" ng-model="loginform_email"
+							placeholder="Email Address" style="width: 290px" required
+							autofocus>
+						<div class="error-container"
+							ng-show="loginform.loginform_email.$dirty && loginform.loginform_email.$invalid">
+							<small class="errorbox"
+								ng-show="loginform.loginform_email.$error.required"><span
+								style="color: red">Email address is required</span></small> <small
+								class="errorbox"
+								ng-show="loginform.loginform_email.$error.email"><span
+								style="color: red">Email id is invalid</span></small>
+						</div>
+
+						<br> <input class="form-control" type="password"
+							id="password1" name="loginform_password"
+							ng-model="loginform_password" placeholder="Password"
+							style="width: 290px" required>
+						<div class="error-container"
+							ng-show="loginform.loginform_password.$dirty && loginform.loginform_password.$invalid">
+							<small class="errorbox"
+								ng-show="loginform.loginform_password.$error.required"><span
+								style="color: red">Password is required</span></small>
+						</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger"
+							ng-disabled="loginform.$invalid"
+							ng-click="loginform_login(loginform_email, loginform_password)"
+							style="width: 290px; float: left" id="login">Log In</button>
+						<br> <br> <br>
+						<div class="errorbox"
+							style="position: relative; padding-top: 1%; padding-left: 40px; color: red" align="center">
+							{{ error }}</div>
+						<div class="successbox"
+							style="position: relative; padding-top: 1%; padding-left: 40px; color: green" align="center">
+							{{success}}</div>
+
+					</div>
+				</form>
 			</div>
 
 		</div>
@@ -567,7 +404,8 @@
 
 	<!-- New sign up -->
 
-	<div class="modal fade" id="myModal" role="dialog" ng-controller="registerController">
+	<div class="modal fade" id="myModal" role="dialog"
+		ng-controller="registerController">
 		<div class="modal-dialog"
 			style="height: 500px; width: 470px; top: 50px; left: 50px">
 
@@ -577,49 +415,92 @@
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" align="center" style="color: red">Wanna be our Amigo?</h4>
+					<h4 class="modal-title" style="color: red">SignUp</h4>
 				</div>
 				<div class="modal-body" style="display: block">
-					<a class="btn btn-block btn-social btn-facebook center-block" onclick="Login();"> 
-						<span class="fa fa-facebook"></span><p class="text-center">Sign Up with Facebook</p>
-					</a> 
-					<p align="center">Don't worry, we never post without your permission.</p>
+					<a class="btn btn-block btn-social btn-facebook center-block"
+						onclick="Login();"> <span class="fa fa-facebook"></span>
+						<p class="text-center">Sign Up with Facebook</p>
+					</a>
+					<p align="center">
+						<font size="2">Don't worry, we never post without your
+							permission.</font>
+					</p>
 					<hr>
-              	<div class="g-signin2" data-width="325" data-height="40" data-longtitle="true" data-onsuccess="onSignIn"></div> 
-              		<hr>
-              		
-              		<form class="form-horizontal">
-                <div class="form-group">
-                  <div class="col-sm-10 col-md-6 col-lg-6">
-                    <input type="text" class="form-control" id="userfirstname" placeholder="First Name" 
-                    name="signupform_firstname" ng-model="signupform_firstname"><br>
-                  </div>
-                  <div class="col-sm-10 col-md-6 col-lg-6">
-                    <input type="text" class="form-control" id="userlastname" placeholder="Last Name"
-                    name="signupform_lastname" ng-model="signupform_lastname"><br>
-                  </div>
-                  <div class="col-sm-10 col-md-12 col-lg-12">
-                    <input type="email" class="form-control" id="useremail" placeholder="Email ID" 
-                    name="signupform_email" ng-model="signupform_email"><br>
-                  </div>  
-                  <div class="col-sm-10 col-md-12 col-lg-12">
-                    <input type="password" class="form-control" id="userpassword" placeholder="Password"
-                    name="signupform_password" ng-model="signupform_password"><br>
-                  </div>  
-                  <div class="col-sm-10 col-md-12 col-lg-12">
-                  	<button type="button" class="btn btn-block btn-success"
-						ng-click="signupform_signup(signupform_firstname, signupform_lastname, signupform_email, signupform_password)">Sign Up</button>
-					</div>
-                  <!-- <div class="col-sm-10 col-md-12 col-lg-12">
-                    <button type="submit" class="btn btn-block btn-default btn-success" onclick="registerNewUser()"><strong>Register</strong></button>
-                  </div> -->
-                </div>
-              </form>
+					<div class="g-signin2" data-width="325" data-height="40"
+						data-longtitle="true" data-onsuccess="onSignIn"></div>
+					<hr>
+
+					<form name="signupform" class="form-horizontal">
+						<div class="form-group">
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<input type="text" class="form-control" id="userfirstname"
+									placeholder="First Name" name="signupform_firstname"
+									ng-model="signupform_firstname" required>
+								<div class="error-container"
+									ng-show="signupform.signupform_name.$dirty && signupform.signupform_name.$invalid">
+									<small class="errorbox"
+										ng-show="signupform.signupform_name.$error.required"><span
+										style="color: red">First name is required</span></small>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<input type="text" class="form-control" id="userlastname"
+									placeholder="Last Name" name="signupform_lastname"
+									ng-model="signupform_lastname" required>
+								<div class="error-container"
+									ng-show="signupform.signupform_name.$dirty && signupform.signupform_name.$invalid">
+									<small class="errorbox"
+										ng-show="signupform.signupform_name.$error.required"><span
+										style="color: red">Last name is required</span></small>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm-10 col-md-12 col-lg-12">
+								<input type="email" class="form-control" id="useremail"
+									placeholder="Email ID" name="signupform_email"
+									ng-model="signupform_email" required>
+								<div class="error-container"
+									ng-show="signupform.signupform_email.$dirty && signupform.signupform_email.$invalid">
+									<small class="errorbox"
+										ng-show="signupform.signupform_email.$error.required"><span
+										style="color: red">Email address is required</span></small> <small
+										class="errorbox"
+										ng-show="signupform.signupform_email.$error.email"><span
+										style="color: red">Email id is invalid</span></small>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm-10 col-md-12 col-lg-12">
+								<input type="password" class="form-control" id="userpassword"
+									placeholder="Password" name="signupform_password"
+									ng-model="signupform_password" required>
+								<div class="error-container"
+									ng-show="signupform.signupform_password.$dirty && signupform.signupform_password.$invalid">
+									<small class="errorbox"
+										ng-show="signupform.signupform_password.$error.required"><span
+										style="color: red">Password is required</span></small>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm-10 col-md-12 col-lg-12">
+								<button type="button" class="btn btn-block btn-success"
+									ng-disabled="signupform.$invalid"
+									ng-click="signupform_signup(signupform_firstname, signupform_lastname, signupform_email, signupform_password)">Sign
+									Up</button>
+							</div>
+
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
-					<p style="float: left">
-						Already our Amigo?<a style="color: red"> Log in</a>
-					</p>
+					<div class="errorbox"
+						style="position: relative; padding-top: 10px; padding-left: 80px; color: red"
+						align="center">{{ error }}</div>
+					<div class="successbox"
+						style="position: relative; padding-top: 10px; padding-left: 80px; color: green"
+						align="center">{{success}}</div>
 
 				</div>
 			</div>
@@ -642,7 +523,7 @@
 			xfbml : true
 		// parse XFBML
 		});
-		
+
 		FB.Event.subscribe('auth.authResponseChange', function(response) {
 			if (response.status === 'connected') {
 				// document.getElementById("message").innerHTML +=  "<br>Connected to Facebook";
@@ -686,21 +567,9 @@
 		FB.api('/me', 'get', {
 			fields : 'id,name,email'
 		}, function(response) {
-			//var str="<b>Name</b> : "+response.name+"<br>";
-			//document.getElementById("status").innerHTML=str;
-
-			//response.name       - User Full name
-			//response.link       - User Facebook URL
-			//response.username   - User name
-			//response.id         - id
-			//response.email      - User email
-
 			console.log(JSON.stringify(response));
-			//alert(response.email);
-
 		});
 	}
-
 
 	function Logout() {
 		FB.logout(function() {
@@ -708,70 +577,6 @@
 		});
 
 	}
-
-	//ends here
-
-	/* old sign up
-	 function statusChangeCallback(response) {
-	 console.log('statusChangeCallback');
-	 console.log(response);
-	 if (response.status === 'connected') {
-	 // Logged into your app and Facebook.
-	 testAPI();
-	 } else if (response.status === 'not_authorized') {
-	 document.getElementById('status').innerHTML = 'Please log '
-	 + 'into this app.';
-	 } else {
-	 document.getElementById('status').innerHTML = 'Please log '
-	 + 'into Facebook.';
-	 }
-	 }
-
-	 function checkLoginState() {
-	 FB.getLoginStatus(function(response) {
-	 statusChangeCallback(response);
-	 });
-	 }
-
-	 window.fbAsyncInit = function() {
-	 FB.init({
-	 appId : '748465485258847',
-	 cookie : true, // enable cookies to allow the server to access 
-	 // the session
-	 xfbml : true, // parse social plugins on this page
-	 version : 'v2.5' // use version 2.2
-	 });
-
-	 FB.getLoginStatus(function(response) {
-	 statusChangeCallback(response);
-	 });
-
-	 };
-
-	 // Load the SDK asynchronously
-	 (function(d, s, id) {
-	 var js, fjs = d.getElementsByTagName(s)[0];
-
-	 if (d.getElementById(id))
-	 return;
-	 js = d.createElement(s);
-	 js.id = id;
-	 js.src = "//connect.facebook.net/en_US/sdk.js";
-	 fjs.parentNode.insertBefore(js, fjs);
-	 }(document, 'script', 'facebook-jssdk'));
-
-	 function testAPI() {
-	 console.log('Welcome!  Fetching your information.... ');
-	 FB
-	 .api(
-	 '/me',
-	 function(response) {
-	 console.log('Successful login for: '
-	 + response.name);
-	 document.getElementById('status').innerHTML = 'Thanks for logging in, '
-	 + response.name + '!';
-	 });
-	 }*/
 
 	// Google maps js
 	var map;

@@ -92,13 +92,13 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
-			console.log('User added');
-			//$scope.success = "User Added Successfully";
+			$scope.success = "Thanks for signing up Amigo!"
+			
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
 			console.log(status);
-			if(status === 400){
+			if(status === 400 || status === 500){
 				$scope.error = data.errorMessage;
 			}
 			return $q.reject(response);
@@ -135,12 +135,13 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		response
 		.success(function(dataFromServer, status,
 				headers, config) {
-			//$location.url('/index.html');
+			$scope.success = "Login Successful!"
+			$location.url('/');
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
 			console.log(status);
-			if(status === 400){
+			if(status === 400 || status === 500){
 				$scope.error = data.errorMessage;
 			}
 			return $q.reject(response);
@@ -160,10 +161,13 @@ hangoutamigosapp.controller('searchController', function($scope, $http, $locatio
 
 	console.log('searchController start');
 
+	var error = 'Please enter a valid place to Hangout!'
+	
 	$scope.searchform_search = function() {
 
 		if(!$scope.search) {
-			alert('Please enter the search query');
+			//alert('Please enter the search query');
+			$scope.errormsg = error;
 		}
 		else {
 			$rootScope.search = $scope.search;
