@@ -1,49 +1,59 @@
-<!-- <script>
-$( document ).ready(function() {
-	
+
+<script>
+$('#savebtn').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+ 
+});
+
+$('#savebtn1').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+
+$('#savebtn2').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn3').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn4').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn5').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn6').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+ 
+});
+
+$('#savebtn7').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+
+$('#savebtn8').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn9').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn10').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
+});
+
+$('#savebtn11').on('click',function(){
+    !$(this).css('background-color', '#98e698') ? $(this).css('background-color', '#98e698')  : '';
 });
 </script>
- -->
-<!-- <script type="text/javascript">
-	function generateHighChart() {
-		$('#container').highcharts(
-				{
-					chart : {
-						type : 'column',
-						margin : 75,
-						options3d : {
-							enabled : true,
-							alpha : 10,
-							beta : 25,
-							depth : 70
-						}
-					},
-					title : {
-						text : 'Restaurant Ratings'
-					},
-					/*subtitle: {
-					    text: 'Notice the difference between a 0 value and a null point'
-					},*/
-					plotOptions : {
-						column : {
-							depth : 25
-						}
-					},
-					xAxis : {
-						categories : [ 'Bluefin', 'The Old Sphagetti Factory',
-								'Hanuman', 'Punjab Cafe', 'Bombay to Goa' ]
-					},
-					/*yAxis: {
-					    opposite: true
-					},*/
-					series : [ {
-						name : 'Ratings',
-						data : [ 3, 2, 2.5, 4, 4.5 ]
-					} ]
-				});
-	}
-</script>
- -->
+
+
 
 <script type="text/javascript"
 	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -117,17 +127,7 @@ $( document ).ready(function() {
 					<h4 class="modal-title" style="color: red">Compare Popularity</h4>
 				</div>
 				<div class="modal-body" style="display: block">
-
-
-
-
-
 					<div class="hc-pie" items="popularity"></div>
-
-
-
-
-
 				</div>
 
 				<div class="modal-footer">
@@ -174,7 +174,7 @@ $( document ).ready(function() {
 										<tr>
 											<td>Restaurant Name</td>
 
-											<td>{{restaurantName1[0]}} <!-- <input type="text" class="input-mini" ng-value="restaurantName1[0]" disabled> -->
+											<td>{{restaurantName1[0]}} 
 											</td>
 										</tr>
 										<tr>
@@ -184,7 +184,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default custom-button"
+								<button type="button" class="btn btn-default custom-button" id="savebtn"
 									ng-click="save(restaurantName1[0], vicinity1[0])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -222,7 +222,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-default" id="savebtn1"
 									ng-click="save(restaurantName1[1], vicinity1[1])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -259,7 +259,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-default" id="savebtn2"
 									ng-click="save(restaurantName1[2], vicinity1[2])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -296,7 +296,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-default" id="savebtn3"
 									ng-click="save(restaurantName1[3], vicinity1[3])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -334,7 +334,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-default" id="savebtn4"
 									ng-click="save(restaurantName1[4], vicinity1[4])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -372,7 +372,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 
-								<button type="button" class="btn btn-default"
+								<button type="button" class="btn btn-default" id="savebtn5"
 									ng-click="save(restaurantName1[5], vicinity1[5])">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
@@ -391,10 +391,6 @@ $( document ).ready(function() {
 								type="button" class="btn btn-success">
 								<i class="icon-bar-chart" style="font-size: 85%;">Compare Popularity</i>
 							</button>
-							<!-- <button id="feed" type="button" class="btn btn-success">
-								<i class="icon-bar-chart" style="font-size: 85%;">High
-									Charts</i>
-							</button> -->
 						</div>
 					</div>
 					<div class="col-4"></div>
@@ -440,7 +436,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[0], placeVicinity1[0])">
+									ng-click="savePlace(placeName1[0], placeVicinity1[0])" id="savebtn6">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
@@ -472,7 +468,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[1], placeVicinity1[1])">
+									ng-click="savePlace(placeName1[1], placeVicinity1[1])" id="savebtn7">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
@@ -503,7 +499,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[2], placeVicinity1[2])">
+									ng-click="savePlace(placeName1[2], placeVicinity1[2])" id="savebtn8">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
@@ -535,7 +531,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[0], placeVicinity2[0])">
+									ng-click="savePlace(placeName2[0], placeVicinity2[0])" id="savebtn9">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
@@ -565,7 +561,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[1], placeVicinity2[1])">
+									ng-click="savePlace(placeName2[1], placeVicinity2[1])" id="savebtn10">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
@@ -596,7 +592,7 @@ $( document ).ready(function() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[2], placeVicinity2[2])">
+									ng-click="savePlace(placeName2[2], placeVicinity2[2])" id="savebtn11">
 									<i class="icon icon-heart"
 										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
 								</button>
