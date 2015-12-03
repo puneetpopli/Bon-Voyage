@@ -1,22 +1,130 @@
 <script>
-$(document).ready(function() {
-$("#fromdatepicker").datepicker();
-$("#todatepicker").datepicker();
-});
+	$(document).ready(function() {
+		$("#fromdatepicker").datepicker();
+		$("#todatepicker").datepicker();
+	});
 </script>
 
 <script type="text/javascript"
 	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,mr,pa,te', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage : 'en',
+			includedLanguages : 'hi,mr,pa,te',
+			layout : google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
 </script>
 
 <div ng-controller="itineraryController">
 
-	<div class="slide story" id="slide-5" style="background-image: url('images/bg1.jpg');">
-		<div id="google_translate_element" align="right" style="padding-right: 1em;"></div>
+
+	<!-- Itinerary modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog"
+			style="height: 500px; width: 550px; top: 50px; left: 50px">
+
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" style="color: green" align="center">Your
+						Itinerary!</h4>
+				</div>
+
+
+				<div class="modal-body" style="display: block">
+					<div
+						style="border-style: groove; border-width: medium; bordere-color: green">
+						<h3 align="center">{{search}}</h3>
+						<span align="center">From: {{from}} </span>&nbsp; <span align="center">To: {{to}} </span> <br>
+						<h4 align="center">Restaurants</h4>
+						<div>
+							<table class="table">
+									<tbody>
+										<tr ng-show='td1'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[0]}}</td>
+										</tr>
+										<tr ng-show='td2'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[1]}}</td>
+										</tr>
+										<tr ng-show='td3'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[2]}}</td>
+										</tr>
+										<tr ng-show='td4'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[3]}}</td>
+										</tr>
+										<tr ng-show='td5'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[4]}}</td>
+										</tr>
+										<tr ng-show='td6'>
+											<td>Restaurant Name</td>
+											<td>{{resultName[5]}}</td>
+										</tr>
+									</tbody>
+								</table>
+						</div>
+						<h4 align="center">Hangout Place</h4>
+						<div>
+							<table class="table">
+									<tbody>
+										<tr ng-show='td7'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[0]}}</td>
+										</tr>
+										<tr ng-show='td8'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[1]}}</td>
+										</tr>
+										<tr ng-show='td9'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[2]}}</td>
+										</tr>
+										<tr ng-show='td10'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[3]}}</td>
+										</tr>
+										<tr ng-show='td11'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[4]}}</td>
+										</tr>
+										<tr ng-show='td12'>
+											<td>Place Name</td>
+											<td>{{resultPlaceName[5]}}</td>
+										</tr>
+									</tbody>
+								</table>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="modal-footer">
+					<div class="col-sm-10 col-md-12 col-lg-12">
+						<button type="button" class="btn btn-block btn-success">Print</button>
+						<button type="button" class="btn btn-block btn-danger"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="slide story" id="slide-5"
+		style="background-image: url('images/bg1.jpg');">
+		<div id="google_translate_element" align="right"
+			style="padding-right: 1em;"></div>
 		<div class="container">
 			<div class="row title-row">Select your Itinerary</div>
 
@@ -24,22 +132,22 @@ function googleTranslateElementInit() {
 
 				<form name="itineraryform">
 					<span class="font-semibold" style="font-size: 20px;">From</span>
-					&nbsp;<input id="fromdatepicker" class="font-semibold" style="color: black;"
-						name="from_date" ng-model="from_date" required/>
-
-					<span class ="font-semibold" style="font-size: 20px;">
-					to </span>
-					<input id="todatepicker" class="font-semibold" style="color: black;" name="to_date"
-									ng-model="to_date" required/>&nbsp;
+					&nbsp;<input id="fromdatepicker" class="font-semibold"
+						style="color: black;" name="from_date" ng-model="from_date"
+						required /> <span class="font-semibold" style="font-size: 20px;">
+						to </span> <input id="todatepicker" class="font-semibold"
+						style="color: black;" name="to_date" ng-model="to_date" required />&nbsp;
 					<button class="btn btn-danger" aria-expanded="false"
-						ng-click="go(from_date, to_date)" ng-disabled="itineraryform.$invalid">
+						ng-click="go(from_date, to_date)"
+						ng-disabled="itineraryform.$invalid">
 						<span class="font-semibold">Go</span>
 					</button>
 				</form>
 			</div>
 		</div>
 	</div>
-	<div class="slide story" id="slide-2" ng-show='showItineraryDiv' style="background: linear-gradient(#FF5E3A,#FF2A68);">
+	<div class="slide story" id="slide-2" ng-show='showItineraryDiv'
+		style="background: linear-gradient(#FF5E3A, #FF2A68);">
 		<div class="container">
 			<div class="row subtitle-row">
 				<div>
@@ -52,11 +160,11 @@ function googleTranslateElementInit() {
 
 			<div class="row content-row">
 				<div class="col-md-12">
-				
+
 					<!-- Thumbnail 1 -->
 					<div ng-show='showThumbanil0'>
 						<div class="thumbnail col-md-5" style="display: inline-block;">
-						<!-- 	<img ng-src="{{icon1[0]}}" class="img-responsive"> -->
+							<!-- 	<img ng-src="{{icon1[0]}}" class="img-responsive"> -->
 							<div class="caption">
 								<h3>Restaurant</h3>
 								<p>
@@ -76,7 +184,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="col-2 hidden-sm">&nbsp;</div>
-	
+
 					<!-- Thumbnail 2 -->
 					<div ng-show='showThumbanil1'>
 						<div class="thumbnail col-md-5" style="display: inline-block;">
@@ -120,7 +228,7 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-2 hidden-sm">&nbsp;</div>
 
 					<!-- Thumbnail 4 -->
@@ -168,7 +276,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="col-2 hidden-sm">&nbsp;</div>
-	
+
 					<!-- Thumbnail 6 -->
 
 					<div ng-show='showThumbanil5'>
@@ -225,7 +333,7 @@ function googleTranslateElementInit() {
 					</div>
 
 					<div class="col-2 hidden-sm">&nbsp;</div>
-	
+
 					<!-- Thumbnail 8 -->
 					<div ng-show='showThumbanil8'>
 						<div class="thumbnail col-md-5" style="display: inline-block;">
@@ -270,7 +378,7 @@ function googleTranslateElementInit() {
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-2 hidden-sm">&nbsp;</div>
 
 					<!-- Thumbnail 10 -->
@@ -348,6 +456,12 @@ function googleTranslateElementInit() {
 			<!-- end of content-row -->
 		</div>
 		<!-- end of container -->
+		<button data-toggle="modal" data-target="#myModal" id="feed"
+			type="button" class="btn btn-success">
+			<i class="icon-print" style="font-size: 90%;"> Generate
+				Itinerary</i>
+		</button>
+
 	</div>
 	<br>
 

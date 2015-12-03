@@ -278,21 +278,34 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 
 	if(len == 1) {
 		$scope.showThumbanil0 = true;
+		$scope.td1 = true;
 	}
 	else if(len == 2) {
 		$scope.showThumbanil0 = true;
 		$scope.showThumbanil1 = true;
+		
+		$scope.td1 = true;
+		$scope.td2 = true;
 	}
 	else if(len == 3) {
 		$scope.showThumbanil0 = true;
 		$scope.showThumbanil1 = true;
 		$scope.showThumbanil2 = true;
+		
+		$scope.td1 = true;
+		$scope.td2 = true;
+		$scope.td3 = true;
 	}
 	else if(len == 4) {
 		$scope.showThumbanil0 = true;
 		$scope.showThumbanil1 = true;
 		$scope.showThumbanil2 = true;
 		$scope.showThumbanil3 = true;
+		
+		$scope.td1 = true;
+		$scope.td2 = true;
+		$scope.td3 = true;
+		$scope.td4 = true;
 	}
 	else if(len == 5) {
 		$scope.showThumbanil0 = true;
@@ -300,6 +313,12 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil2 = true;
 		$scope.showThumbanil3 = true;
 		$scope.showThumbanil4 = true;
+		
+		$scope.td1 = true;
+		$scope.td2 = true;
+		$scope.td3 = true;
+		$scope.td4 = true;
+		$scope.td5 = true;
 	}
 	//len==6
 	else if(len==6){
@@ -309,6 +328,13 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil3 = true;
 		$scope.showThumbanil4 = true;
 		$scope.showThumbanil5 = true;
+		
+		$scope.td1 = true;
+		$scope.td2 = true;
+		$scope.td3 = true;
+		$scope.td4 = true;
+		$scope.td5 = true;
+		$scope.td6 = true;
 	}
 
 	/*
@@ -318,21 +344,37 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 
 	if(len1 == 1) {
 		$scope.showThumbanil7 = true;
+		
+		$scope.td7 = true;
 	}
 	else if(len1 == 2) {
 		$scope.showThumbanil7 = true;
 		$scope.showThumbanil8 = true;
+		
+		$scope.td7 = true;
+		$scope.td8 = true;
+	
 	}
 	else if(len1 == 3) {
 		$scope.showThumbanil7 = true;
 		$scope.showThumbanil8 = true;
 		$scope.showThumbanil9 = true;
+		
+		$scope.td7 = true;
+		$scope.td8 = true;
+		$scope.td9 = true;
+	
 	}
 	else if(len1 == 4) {
 		$scope.showThumbanil7 = true;
 		$scope.showThumbanil8 = true;
 		$scope.showThumbanil9 = true;
 		$scope.showThumbanil10 = true;
+		
+		$scope.td7 = true;
+		$scope.td8 = true;
+		$scope.td9 = true;
+		$scope.td10 = true;
 	}
 	else if(len1 == 5) {
 		$scope.showThumbanil7 = true;
@@ -340,6 +382,13 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil9 = true;
 		$scope.showThumbanil10 = true;
 		$scope.showThumbanil11 = true;
+		
+		$scope.td7 = true;
+		$scope.td8 = true;
+		$scope.td9 = true;
+		$scope.td10 = true;
+		$scope.td11 = true;
+	
 	}
 
 	else if(len1 == 6){
@@ -349,6 +398,13 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil10 = true;
 		$scope.showThumbanil11 = true;
 		$scope.showThumbanil12 = true;
+		
+		$scope.td7 = true;
+		$scope.td8 = true;
+		$scope.td9 = true;
+		$scope.td10 = true;
+		$scope.td11 = true;
+		$scope.td12 = true;
 	}
 
 	console.log('itineraryController end');
