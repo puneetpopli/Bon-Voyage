@@ -1,0 +1,35 @@
+.hideMe
+{
+	display:none;
+}
+
+#TopVideoContainer
+{
+	position: absolute;
+}
+
+#TopVideoContainer
+{
+	top:0%;
+	left:0%;
+	height:100%;
+	width:100%;
+}
+
+/* video
+{
+	position:absolute;
+} */
+
+.StretchtoFit
+{
+	/* Important: No Height attribute is being specified */
+	width: 100%;
+}
+
+.KeepAspectRatio
+{
+	/* Notice how this is set to 100% width and height, yet it still doesnt stretch! */
+	height: 100%;
+	width: 100%;
+}

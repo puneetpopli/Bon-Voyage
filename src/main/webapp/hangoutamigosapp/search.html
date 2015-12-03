@@ -9,31 +9,38 @@ function googleTranslateElementInit() {
 	<!-- === MAIN Background === -->
 	
 	<div class="slide story" id="search-slide-1" data-slide="1">
+	
 		<div class="container">
-			<div class="row title-row">
-				<div class="col-sm-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<span style="color: black;">Your search</span>
-							<div id="google_translate_element"></div>
+				<div class="row title-row">
+				<!-- <video class="StretchtoFit" loop autoplay muted>
+					<source src="videos/California.mp4" type="video/mp4" />
+					<source src="videos/California.webm" type="video/webm" />
+					<source src="videos/California.ogv" type="video/ogg" />
+				</video> -->
+					<div class="col-sm-12">
+						<div class="panel panel-default custom-panel">
+							<div class="panel-heading" style="background-color: rgba( 255, 255, 255, 0.5);">
+								Your search
+								<div id="google_translate_element"></div>
+							</div>
+							<div class="panel-body" id="map"
+								style="width: 100%; height: 400px;">
+							</div>
 						</div>
-						<div class="panel-body" id="map"
-							style="width: 100%; height: 400px; background-color: #CCC;">
+					</div>
+					
+					<div class="col-sm-12">
+						<div>
+							<button type="button" class="btn btn-default"
+								ng-click="restaurant_result()"><i class="icon icon-food" style="font-size: 85%; color: #238E68">&nbsp;Restaurants</i></button>
+							<button type="button" class="btn btn-default"
+								ng-click="neayByPlace_result()"><i class="icon icon-map-marker" style="font-size: 85%; color: #0080ff;">&nbsp;Near By Places</i></button>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-sm-12">
-					<div>
-						<button type="button" class="btn btn-default"
-							ng-click="restaurant_result()"><i class="icon icon-food" style="font-size: 85%; color: #238E68">&nbsp;Restaurants</i></button>
-						<button type="button" class="btn btn-default"
-							ng-click="neayByPlace_result()"><i class="icon icon-map-marker" style="font-size: 85%; color: #0080ff;">&nbsp;Near By Places</i></button>
-					</div>
-				</div>
-			</div>
-
+	
 		</div>
+		<!-- end of container -->
 	</div>
 	<!-- /slide1 -->
 
@@ -44,7 +51,7 @@ function googleTranslateElementInit() {
 		<div class="container" ng-show='showDiv1'>
 			<div class="row subtitle-row">
 				<div class="col-12">
-					<span class="font-semibold" style="font-size: 35px;">Restaurants</span>
+					<span class="font-semibold" style="font-size: 35px; color: white;">Restaurants</span>
 				</div>
 			</div>
 			
@@ -455,6 +462,11 @@ function googleTranslateElementInit() {
 <div class="col-md-12" ng-controller="proceedController">
 		<div class="col-md-4"></div>
 		<div class="col-md-4">
+		
+			<div class="row line-row">
+				<div>&nbsp;</div>
+			</div><!-- /row -->
+		
 			<button id="itinerary" type="button" ng-click="proceed()"
 				class="btn btn-primary" style="height:35px; position:relative; margin: -20px -50px; width:100px; top:50%; left:50%;">
 				&nbsp;Proceed
