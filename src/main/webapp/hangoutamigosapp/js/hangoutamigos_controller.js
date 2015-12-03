@@ -93,7 +93,7 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		.success(function(dataFromServer, status,
 				headers, config) {
 			$scope.success = "Thanks for signing up Amigo!"
-				//$location.url('#/');
+				$location.url('/');
 			
 		});
 		response.error(function(data, status, headers, config) {
