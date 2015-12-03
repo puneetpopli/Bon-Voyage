@@ -15,19 +15,33 @@ import com.mongodb.ServerAddress;
 public class MongoDbConnection {
 
 	public static MongoTemplate getConnection() {
-		MongoClientURI uri=null;
-		MongoClient mongoclient=null;
-		MongoTemplate mongoConnection=null;
+
+
 		try {
-			uri = new MongoClientURI("mongodb://cmpe280:hangoutamigos@ds057224.mongolab.com:57224/hangoutamigos");
-			mongoclient = new MongoClient(uri);
-			mongoConnection = new MongoTemplate(mongoclient,"bikeshare");
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		} catch (Exception e){
-			e.printStackTrace();
-		}
-		return mongoConnection;
+			return new MongoTemplate(mongoDbFactory());
+			} catch (Exception e) {
+			throw new AssertionError("Page cannot be created");
+			}
 	}
 	
+	
+	public static MongoDbFactory mongoDbFactory() throws Exception {
+
+	
+
+		MongoCredential credential = MongoCredential.createCredential("hangoutamigos", "cmpe280", "hangoutamigos".toCharArray());
+		
+		String mongoHost = "ds063892.mongolab.com";
+		int mongoPort = 63892;
+		
+		ServerAddress serverAddress = new ServerAddress(mongoHost, mongoPort);
+		MongoClient mongoClient = new MongoClient(serverAddress, Arrays.asList(credential));
+	
+		// Mongo DB Factory
+		SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(
+				mongoClient, "cmpe280");
+
+		return simpleMongoDbFactory;
+	}
+
 }

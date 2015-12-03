@@ -11,22 +11,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "login")
 public class Login {
 
-	private int userId;
+	private Integer userId;
 
 	private String email;
 
 	private String password;
 
-	private String sessionId;
+	private Integer sessionId;
 
-	public int getUserId() {
+	
+
+
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-
 
 	public String getEmail() {
 		return email;
@@ -44,13 +46,14 @@ public class Login {
 		this.password = password;
 	}
 
-	public String getSessionId() {
+	public Integer getSessionId() {
 		return sessionId;
 	}
 
-	public void setSessionId(String sessionId) {
+	public void setSessionId(Integer sessionId) {
 		this.sessionId = sessionId;
 	}
+
 
 	
 	

@@ -15,7 +15,7 @@ import org.joda.time.DateTime;
 public class HangoutAmigosUtil {
 
 	//Generate unique ID for user
-	public static Integer generateUserId() {
+	public static Integer generateUserId(Integer val) {
 
 		DateTime date = new DateTime();
 		Integer year = date.getYear();
@@ -25,7 +25,7 @@ public class HangoutAmigosUtil {
 		Integer milli = date.getMillisOfDay();
 		Integer milliSec = date.getMillisOfSecond();
 
-		Integer userId = year+milli+month+day+milliSec+hour;
+		Integer userId = val + year+milli+month+day+milliSec+hour;
 
 		return userId;
 

@@ -1,5 +1,6 @@
 package com.hangout.amigos.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.hangout.amigos.dto.Login;
 import com.hangout.amigos.dto.User;
 import com.hangout.amigos.dto.UserDTO;
 import com.hangout.amigos.intf.UserOperationIntf;
+import com.hangout.amigos.mail.EmailNotification;
 import com.hangout.amigos.util.HangoutAmigosUtil;
 
 /**
@@ -34,24 +36,33 @@ public class UserOperationImpl implements UserOperationIntf{
 		
 		User userObj = new User();
 		Login loginObj = new Login();
-		int userId = HangoutAmigosUtil.generateUserId();
+		
 		
 		try {
 			
 			BeanUtils.copyProperties(userObj, userDto);
-			
+			Integer userId = HangoutAmigosUtil.generateUserId(10);
+			System.out.println("User id --- " + userId);
+			userObj.setUserId(userId);
+			loginObj.setUserId(userId);
 			loginObj.setEmail(userObj.getEmail());
 			loginObj.setPassword(HangoutAmigosUtil.passwordEncryption(userObj.getEmail()));
+			System.out.println("userObj.getUserId() " + userObj.getUserId());
 			loginObj.setUserId(userObj.getUserId());
 		
 			System.out.println("User id " + userId);
 			userDto.setUserId(userId);
 			
-			//userDao.saveUser(userObj);
-			//loginDao.saveObject(loginObj);
+			//stroing in mongo
+			userDao.saveUser(userObj);
+			loginDao.saveObject(loginObj);
 			
-			userList.add(userObj);
-			loginList.add(loginObj);
+			try {
+				EmailNotification.sendEmailonSignUp(userObj.getEmail(), userObj.getFirstName());
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			System.out.println("User created");
 			

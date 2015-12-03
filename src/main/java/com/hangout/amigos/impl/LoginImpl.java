@@ -19,7 +19,7 @@ public class LoginImpl implements LoginIntf{
 	@Override
 	public LoginDTO login(LoginDTO loginDTO) {
 		
-		Login logindao = new Login();
+Login logindao = new Login();
 		
 		
 		try{
@@ -29,26 +29,25 @@ public class LoginImpl implements LoginIntf{
 			
 			//uncomment this when mongo starts working and in if change logindao to login
 			//Login login = loginDao.getObject(logindao.getEmail(), logindao.getPassword());
-			if(logindao == null){
-				System.out.println("Invalid Username/Password");
-			}else{
-				//generate sessionId
+
+			//generate sessionId
 				int sessionId = HangoutAmigosUtil.getRandomInteger();
 				
 				//changing this because mongo is not working. uncomment when mongo starts working
-				//login.setSessionId(Integer.toString(sessionId));
+				//login.setSessionId(sessionId);
 				
 				loginList.add(logindao);
 				
 				//loginDao.updateObject(login);
 				
 				//set session id in header
-				loginDTO.setSessionId(Integer.toString(sessionId));
+				loginDTO.setSessionId(sessionId);
 				
 				//change logindao to login when mongo starts working
 				loginDTO.setUserId(logindao.getUserId());
 				System.out.println("Login Successful");
-			}
+			
+			
 		}catch(IllegalAccessException e){
 			e.printStackTrace();
 		}catch(InvocationTargetException e){

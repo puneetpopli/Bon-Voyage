@@ -15,6 +15,7 @@ public class UserDao {
 	private MongoTemplate mongoTemplate = MongoDbConnection.getConnection();
 	
 	public void saveUser(User user) {
+		System.out.println("Save user called");
 		mongoTemplate.save(user, "user");
 	}
 	

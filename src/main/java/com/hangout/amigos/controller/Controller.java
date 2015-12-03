@@ -96,17 +96,6 @@ public class Controller extends WebMvcConfigurerAdapter {
 		return new ResponseEntity<List<NearByPlaceWithAnyType>>(place, HttpStatus.OK);
 	}
 
-	/*
-	 * 4. Get details of a particular place
-	 */
-	@RequestMapping(value="/getplacedetail/placeid/{placeid}", method=RequestMethod.GET)
-	public ResponseEntity<List<ParticularPlaceDetail>> getNearByPlaceWithAnyType(@PathVariable("placeid") String placeId) {
-
-		List<ParticularPlaceDetail> place = googlePlace.getParticularPlaceDetail(placeId);
-
-		return new ResponseEntity<List<ParticularPlaceDetail>>(place, HttpStatus.OK);
-	}
-	
 	
 	/*
 	 * 5.  Get a restaurant when a user enter query. For e.g restaurants in san francisco
@@ -161,12 +150,13 @@ public class Controller extends WebMvcConfigurerAdapter {
 		loginDTO = loginImpl.login(loginDTO);
 		
 		loginDTO.setPassword(HangoutAmigosUtil.passwordEncryption(loginDTO.getPassword()));
+
 		
 		System.out.println("EMail " + loginDTO.getEmail() + " - Pass "+ loginDTO.getPassword() + " - Userid" + loginDTO.getUserId());
 		
-		response.addCookie(new Cookie("sessionid", loginDTO.getSessionId()));
+		//response.addCookie(new Cookie("sessionid", Integer.toString(loginDTO.getSessionId())));
 		response.addCookie(new Cookie("username", loginDTO.getEmail()));
-		response.addCookie(new Cookie("userId", Integer.toString(loginDTO.getUserId())));
+	//	response.addCookie(new Cookie("userId", Integer.toString(loginDTO.getUserId())));
 		return loginDTO;
 	}
 
