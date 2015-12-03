@@ -1,65 +1,167 @@
+<!-- <script>
+$( document ).ready(function() {
+	
+});
+</script>
+ -->
+<!-- <script type="text/javascript">
+	function generateHighChart() {
+		$('#container').highcharts(
+				{
+					chart : {
+						type : 'column',
+						margin : 75,
+						options3d : {
+							enabled : true,
+							alpha : 10,
+							beta : 25,
+							depth : 70
+						}
+					},
+					title : {
+						text : 'Restaurant Ratings'
+					},
+					/*subtitle: {
+					    text: 'Notice the difference between a 0 value and a null point'
+					},*/
+					plotOptions : {
+						column : {
+							depth : 25
+						}
+					},
+					xAxis : {
+						categories : [ 'Bluefin', 'The Old Sphagetti Factory',
+								'Hanuman', 'Punjab Cafe', 'Bombay to Goa' ]
+					},
+					/*yAxis: {
+					    opposite: true
+					},*/
+					series : [ {
+						name : 'Ratings',
+						data : [ 3, 2, 2.5, 4, 4.5 ]
+					} ]
+				});
+	}
+</script>
+ -->
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript"
+	src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi,mr,pa,te', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-}
+	function googleTranslateElementInit() {
+		new google.translate.TranslateElement({
+			pageLanguage : 'en',
+			includedLanguages : 'hi,mr,pa,te',
+			layout : google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 'google_translate_element');
+	}
 </script>
 <div ng-controller="restaurantController" ng-init="initRest()">
 	<!-- === MAIN Background === -->
-	
-	<div class="slide story" id="search-slide-1" data-slide="1" style="background-image: url('images/roadtrip4.jpg');">
-	
+
+	<div class="slide story" id="search-slide-1" data-slide="1"
+		style="background-image: url('images/roadtrip4.jpg');">
+
 		<div class="container">
-				<div class="row title-row">
+			<div class="row title-row">
 				<!-- <video class="StretchtoFit" loop autoplay muted>
 					<source src="videos/California.mp4" type="video/mp4" />
 					<source src="videos/California.webm" type="video/webm" />
 					<source src="videos/California.ogv" type="video/ogg" />
 				</video> -->
-					<div class="col-sm-12">
-						<div class="panel panel-default custom-panel">
-							<div class="panel-heading">
-								{{search}}
-								<div id="google_translate_element"></div>
-							</div>
-							<div class="panel-body" id="map"
-								style="width: 100%; height: 400px;">
-							</div>
+				<div class="col-sm-12">
+					<div class="panel panel-default custom-panel">
+						<div class="panel-heading">
+							{{search}}
+							<div id="google_translate_element"></div>
 						</div>
-					</div>
-					
-					<div class="col-sm-12">
-						<div>
-							<button type="button" class="btn btn-default"
-								ng-click="restaurant_result()"><i class="icon icon-food" style="font-size: 85%; color: #238E68">&nbsp;Restaurants</i></button>
-							<button type="button" class="btn btn-default"
-								ng-click="neayByPlace_result()"><i class="icon icon-map-marker" style="font-size: 85%; color: #0080ff;">&nbsp;Near By Places</i></button>
-						</div>
+						<div class="panel-body" id="map"
+							style="width: 100%; height: 400px;"></div>
 					</div>
 				</div>
-	
+
+				<div class="col-sm-12">
+					<div>
+						<button type="button" class="btn btn-default"
+							ng-click="restaurant_result()">
+							<i class="icon icon-food" style="font-size: 85%; color: #238E68">&nbsp;Restaurants</i>
+						</button>
+						<button type="button" class="btn btn-default"
+							ng-click="neayByPlace_result()">
+							<i class="icon icon-map-marker"
+								style="font-size: 85%; color: #0080ff;">&nbsp;Near By Places</i>
+						</button>
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<!-- end of container -->
 	</div>
 	<!-- /slide1 -->
 
 
+	<!-- High chart Modal  -->
+
+	<div class="modal fade" id="myModal" role="dialog"
+		ng-controller="registerController">
+		<div class="modal-dialog"
+			style="height: 500px; width: 550px; top: 50px; left: 50px">
+
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" style="color: red">Compare Popularity</h4>
+				</div>
+				<div class="modal-body" style="display: block">
+
+
+
+
+
+					<div class="hc-pie" items="popularity"></div>
+
+
+
+
+
+				</div>
+
+				<div class="modal-footer">
+					<div class="col-sm-10 col-md-12 col-lg-12">
+						<button type="button" class="btn btn-block btn-danger"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<!--  -->
+
+
 	<!-- Div 2 -->
 
 	<div class="slide story" id="search-slide-2" data-slide="2">
-		<div class="container" ng-show='showDiv1' style="background-image: url('images/back2.jpg');">
+		<div class="container" ng-show='showDiv1'
+			style="background-image: url('images/back2.jpg');">
 			<div class="row subtitle-row">
 				<div class="col-12">
 					<span class="font-semibold" style="font-size: 35px; color: white;">Restaurants</span>
 				</div>
 			</div>
-			
+
 			<div class="row content-row">
 				<!-- Thumbnail 1 -->
 				<div class="col-md-12">
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[0]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 1</h3>
@@ -83,7 +185,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default custom-button"
-									ng-click="save(restaurantName1[0], vicinity1[0])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[0], vicinity1[0])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -94,7 +199,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 2 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[0]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 2</h3>
@@ -117,7 +223,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default"
-									ng-click="save(restaurantName1[1], vicinity1[1])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[1], vicinity1[1])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -127,7 +236,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 3 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[2]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 3</h3>
@@ -150,7 +260,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default"
-									ng-click="save(restaurantName1[2], vicinity1[2])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[2], vicinity1[2])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -160,7 +273,8 @@ function googleTranslateElementInit() {
 				<!-- Thumbnail 4 -->
 				<div class="col-12">
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[3]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 4</h3>
@@ -183,7 +297,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default"
-									ng-click="save(restaurantName1[3], vicinity1[3])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[3], vicinity1[3])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -194,7 +311,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 5 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[4]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 5</h3>
@@ -217,7 +335,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default"
-									ng-click="save(restaurantName1[4], vicinity1[4])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[4], vicinity1[4])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -228,7 +349,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 6 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{icon1[5]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Restaurant 6</h3>
@@ -251,7 +373,10 @@ function googleTranslateElementInit() {
 								</table>
 
 								<button type="button" class="btn btn-default"
-									ng-click="save(restaurantName1[5], vicinity1[5])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="save(restaurantName1[5], vicinity1[5])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -262,10 +387,14 @@ function googleTranslateElementInit() {
 					<div class="col-4"></div>
 					<div class="col-4">
 						<div>
-							<button id="feed" type="button" class="btn btn-success">
+							<button data-toggle="modal" data-target="#myModal" id="feed"
+								type="button" class="btn btn-success">
+								<i class="icon-bar-chart" style="font-size: 85%;">Compare Popularity</i>
+							</button>
+							<!-- <button id="feed" type="button" class="btn btn-success">
 								<i class="icon-bar-chart" style="font-size: 85%;">High
 									Charts</i>
-							</button>
+							</button> -->
 						</div>
 					</div>
 					<div class="col-4"></div>
@@ -274,24 +403,27 @@ function googleTranslateElementInit() {
 
 		</div>
 	</div>
-	
+
 	<!-- Horizontal rule -->
 	<div class="row line-row">
-				<div class="hr">&nbsp;</div>
-	</div><!-- /row -->
+		<div class="hr">&nbsp;</div>
+	</div>
+	<!-- /row -->
 	<!-- /slide2 -->
-	
+
 
 	<!-- Div 3 -->
 	<div class="slide story" id="search-slide-2" data-slide="3">
-		<div class="container" ng-show='showDiv2' style="background-image: url('images/roadtrip3.jpg');">
+		<div class="container" ng-show='showDiv2'
+			style="background-image: url('images/roadtrip3.jpg');">
 			<div class="row content-row">
 
 
 				<!-- Thumbnail 1 -->
 				<div class="col-md-12">
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon1[0]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 1</h3>
@@ -308,7 +440,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[0], placeVicinity1[0])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName1[0], placeVicinity1[0])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -319,7 +454,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 2 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon1[1]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 2</h3>
@@ -336,7 +472,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[1], placeVicinity1[1])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName1[1], placeVicinity1[1])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -346,7 +485,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 3 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon1[2]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 3</h3>
@@ -363,7 +503,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName1[2], placeVicinity1[2])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName1[2], placeVicinity1[2])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -374,7 +517,8 @@ function googleTranslateElementInit() {
 				<div class="col-12">
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon2[0]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 4</h3>
@@ -391,7 +535,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[0], placeVicinity2[0])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName2[0], placeVicinity2[0])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -400,7 +547,8 @@ function googleTranslateElementInit() {
 
 					<!-- Thumbnail 5 -->
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon2[1]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 5</h3>
@@ -417,7 +565,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[1], placeVicinity2[1])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName2[1], placeVicinity2[1])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -427,7 +578,8 @@ function googleTranslateElementInit() {
 					<!-- Thumbnail 6 -->
 
 					<div class="col-md-3">
-						<div class="thumbnail" style="left: 21%; height: 380px; position: relative;">
+						<div class="thumbnail"
+							style="left: 21%; height: 380px; position: relative;">
 							<img ng-src="{{placeIcon2[2]}}" class="img-responsive">
 							<div class="caption">
 								<h3>Hangout Place 6</h3>
@@ -444,7 +596,10 @@ function googleTranslateElementInit() {
 									</tbody>
 								</table>
 								<button type="button" class="btn btn-default"
-									ng-click="savePlace(placeName2[2], placeVicinity2[2])"><i class="icon icon-heart" style="font-size: 85%; color: #ff6666;">&nbsp;Save</i></button>
+									ng-click="savePlace(placeName2[2], placeVicinity2[2])">
+									<i class="icon icon-heart"
+										style="font-size: 85%; color: #ff6666;">&nbsp;Save</i>
+								</button>
 
 							</div>
 						</div>
@@ -460,20 +615,22 @@ function googleTranslateElementInit() {
 
 
 <div class="col-md-12" ng-controller="proceedController">
-		<div class="col-md-4"></div>
-		<div class="col-md-4">
-		
-			<div class="row line-row">
-				<div>&nbsp;</div>
-			</div><!-- /row -->
-		
-			<button id="itinerary" type="button" ng-click="proceed()"
-				class="btn btn-primary" style="height:35px; position:relative; margin: -20px -50px; width:100px; top:50%; left:50%;">
-				&nbsp;Proceed
-				<i class="icon icon-hand-right" style="font-size: 85%; color: white;">
-				</button>
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+
+		<div class="row line-row">
+			<div>&nbsp;</div>
 		</div>
-		<div class="col-md-4"></div>
+		<!-- /row -->
+
+		<button id="itinerary" type="button" ng-click="proceed()"
+			class="btn btn-primary"
+			style="height: 35px; position: relative; margin: -20px -50px; width: 100px; top: 50%; left: 50%;">
+			&nbsp;Proceed <i class="icon icon-hand-right"
+				style="font-size: 85%; color: white;">
+		</button>
+	</div>
+	<div class="col-md-4"></div>
 </div>
 <!-- Dummy div -->
 <!-- <div class="col-md-12 hidden-sm">&nbsp;</div>

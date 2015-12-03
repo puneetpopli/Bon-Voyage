@@ -2,6 +2,72 @@ var hangoutamigosapp = angular.module('hangoutamigosapp', [ 'ngRoute', 'ngResour
 
 
 
+
+//directive
+
+hangoutamigosapp.directive('hcPie', function () {
+	return {
+		restrict: 'C',
+		replace: true,
+		scope: {
+			items: '='
+		},
+		controller: function ($scope, $element, $attrs) {
+
+
+		},
+		template: '<div id="container" style="height: 400px; width: 450px;"></div>',
+		link: function (scope, element, attrs) {
+
+			var chart = new Highcharts.Chart({
+				chart: {
+					renderTo: 'container',
+					plotBackgroundColor: null,
+					plotBorderWidth: null,
+					plotShadow: false
+				},
+				title: {
+					text: 'Restaurant Ratings'
+				},
+				/*tooltip: {
+		          pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+		          percentageDecimals: 1
+		        },*/
+				plotOptions: {
+					column: {
+						allowPointSelect: true,
+						cursor: 'pointer',
+						dataLabels: {
+							enabled: true,
+							color: '#000000',
+							connectorColor: '#000000',
+							/* formatter: function () {
+		                return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+		              }*/
+						}
+					}
+				},
+				series: [{
+					type: 'column',
+					name: 'Rating',
+					data: scope.items
+				}]
+			});
+			scope.$watch("items", function (newValue) {
+				chart.series[0].setData(newValue, true);
+			}, true);
+
+		}
+	}
+});
+
+
+
+//directive
+
+
+
+
 hangoutamigosapp.factory('dataSharing', function() {
 
 	var textResult = [];
@@ -94,7 +160,7 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 				headers, config) {
 			$scope.success = "Thanks for signing up Amigo!"
 				$location.url('/');
-			
+
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
@@ -115,14 +181,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		dataSharing, $timeout, $rootScope) {
 	console.log('loginController start');
 
-
-
 	$scope.loginform_login = function(em1, pass1) {
-		console.log("--> Submitting form "
-				+ $scope.loginform_email + " "
-				+ $scope.loginform_password);
-		console.log("--> Submitting form ");
-
 
 		var data = {
 				email : em1,
@@ -137,7 +196,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		.success(function(dataFromServer, status,
 				headers, config) {
 			$scope.success = "Login Successful!"
-			
+
 		});
 		response.error(function(data, status, headers, config) {
 			console.log(data.errorMessage);
@@ -149,7 +208,7 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		});
 	};
 
-	
+
 
 	console.log('loginController end');
 });
@@ -161,8 +220,8 @@ hangoutamigosapp.controller('searchController', function($scope, $http, $locatio
 	console.log('searchController start');
 
 	var error = 'Please enter a valid place to Hangout!'
-	
-	$scope.searchform_search = function() {
+
+		$scope.searchform_search = function() {
 
 		if(!$scope.search) {
 			//alert('Please enter the search query');
@@ -200,23 +259,23 @@ hangoutamigosapp.controller('proceedController', function($scope, $http, $locati
 hangoutamigosapp.controller('itineraryController', function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
 
 	console.log('itineraryController start');
-	
-	
+
+
 	$scope.go = function(from, to) {
-		
+
 		$rootScope.from = from;
 		$rootScope.to = to;
 		$scope.showItineraryDiv = true;
 		console.log('from ' + $rootScope.from);
-		
+
 	}
 
 	/*
 	 * displaying restaurant thumbnail
 	 */
 	var len = $rootScope.resultName.length;
-	
-	
+
+
 	if(len == 1) {
 		$scope.showThumbanil0 = true;
 	}
@@ -251,12 +310,12 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil4 = true;
 		$scope.showThumbanil5 = true;
 	}
-	
+
 	/*
 	 * displaying places thumbnail
 	 */
 	var len1 = $rootScope.resultPlaceName.length;
-	
+
 	if(len1 == 1) {
 		$scope.showThumbanil7 = true;
 	}
@@ -291,7 +350,7 @@ hangoutamigosapp.controller('itineraryController', function($scope, $http, $loca
 		$scope.showThumbanil11 = true;
 		$scope.showThumbanil12 = true;
 	}
-	
+
 	console.log('itineraryController end');
 
 });
@@ -319,9 +378,14 @@ hangoutamigosapp.controller('imageController', function($scope, $http, $location
 
 //View Restaurant
 hangoutamigosapp.controller('restaurantController',
-		function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope, $resource) {
+		function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope, $resource, limitToFilter) {
 
 	console.log('restaurantController start');
+
+
+
+
+
 
 	//for restaurant
 	//storing the entire result of the restaurant search
@@ -475,6 +539,20 @@ hangoutamigosapp.controller('restaurantController',
 				}
 			}
 
+
+			//high charts
+			$scope.ideas = [
+			                [$rootScope.restaurantName1[0], $rootScope.rating1[0]],
+			                [$rootScope.restaurantName1[1], $rootScope.rating1[1]],
+			                [$rootScope.restaurantName1[2], $rootScope.rating1[2]],
+			                [$rootScope.restaurantName1[3], $rootScope.rating1[3]],
+			                [$rootScope.restaurantName1[4], $rootScope.rating1[4]],
+			                [$rootScope.restaurantName1[5], $rootScope.rating1[5]]
+			                ];
+
+			$scope.popularity = limitToFilter($scope.ideas, 6);
+
+
 			for(var i=0; i<=5; i++) {
 
 				if($rootScope.rating1[i]!==null) {
@@ -505,11 +583,15 @@ hangoutamigosapp.controller('restaurantController',
 		}, function errorCallback(response) {
 
 		});
+
+
 		//show div
 		$scope.showDiv1 = true;
 
 
+
 	};
+
 
 	//This will display the map with all the restaurants on the map
 	var marker1;
@@ -529,14 +611,14 @@ hangoutamigosapp.controller('restaurantController',
 				map: map,
 				animation: google.maps.Animation.DROP
 			});
-			
-			  google.maps.event.addListener(marker1, 'click', (function(marker1, k) {
-	                return function() {
-	                infowindow.setContent($rootScope.restaurantName1[k]);
-	                infowindow.open(map, marker1);
-	              }
-	              })(marker1, k));
-			
+
+			google.maps.event.addListener(marker1, 'click', (function(marker1, k) {
+				return function() {
+					infowindow.setContent($rootScope.restaurantName1[k]);
+					infowindow.open(map, marker1);
+				}
+			})(marker1, k));
+
 		}
 
 
@@ -711,7 +793,7 @@ hangoutamigosapp.controller('restaurantController',
 					map: map,
 					animation: google.maps.Animation.DROP
 				});
-				
+
 			}
 			for(var p=0; p<=2; p++) {
 				//console.log($rootScope.placeName[m]);
@@ -720,7 +802,7 @@ hangoutamigosapp.controller('restaurantController',
 					map: map,
 					animation: google.maps.Animation.DROP
 				});
-				
+
 			}
 
 
@@ -736,18 +818,19 @@ hangoutamigosapp.controller('restaurantController',
 
 
 	};
+
 	console.log('restaurantController end');
 
 });
 
 //Navbar controller
 hangoutamigosapp.controller('TestCtrl', function($scope, $location, $anchorScroll) {
-$scope.scrollTo = function(id) {
-    var old = $location.hash();
-    $location.hash(id);
-    $anchorScroll();
-    //reset to old to keep any additional routing logic from kicking in
-    $location.hash(old);
-};
+	$scope.scrollTo = function(id) {
+		    var old = $location.hash();
+		    $location.hash(id);
+		    $anchorScroll();
+		    //reset to old to keep any additional routing logic from kicking in
+		    $location.hash(old);
+	};
 
 });
