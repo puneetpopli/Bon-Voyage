@@ -1,5 +1,4 @@
-var hangoutamigosapp = angular.module('hangoutamigosapp', [ 'ngRoute', 'ngResource']);
-
+var hangoutamigosapp = angular.module('hangoutamigosapp', [ 'ngRoute', 'ngResource','duScroll']);
 
 
 

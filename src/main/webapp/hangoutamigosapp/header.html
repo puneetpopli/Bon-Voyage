@@ -9,31 +9,32 @@
 		</button>
 
 
-		<div class="nav-collapse collapse navbar-responsive-collapse"
-			ng-controller="TestCtrl">
+		<div class="nav-collapse collapse navbar-responsive-collapse">
 			<ul class="nav row">
-				<li data-slide="1" class="col-12 col-sm-2"><a href="#/" id="menu-link-1"
-					ng-click="scrollTo('slide-1')" title="Home"><span
+				<li data-slide="1" class="col-12 col-sm-2"><a id="menu-link-1"
+					du-smooth-scroll='slide-1' duration=1500 title="Home"><span
 						class="icon icon-home"></span> <span class="text">HOME</span></a></li>
 				<li data-slide="2" class="col-12 col-sm-2"><a id="menu-link-2"
-					ng-click="scrollTo('slide-2')" title="Search"><span
+					du-smooth-scroll='slide-2' duration=1500 title="Search"><span
 						class="icon icon-search"></span> <span class="text">SEARCH</span></a></li>
 				<li data-slide="3" class="col-12 col-sm-2"><a id="menu-link-3"
-					ng-click="scrollTo('slide-3')" title="Hot Destination"><span class="icon icon-picture">
-						</span> <span class="text">HOT DESTINATIONS</span></a></li>
+					du-smooth-scroll='slide-3' duration=1500 title="Hot Destination"><span
+						class="icon icon-picture"> </span> <span class="text">HOT
+							DESTINATIONS</span></a></li>
 				<li data-slide="4" class="col-12 col-sm-2"><a id="menu-link-4"
-					ng-click="scrollTo('slide-4')" title="Process"><span
+					du-smooth-scroll='slide-4' duration=1500 title="Process"><span
 						class="icon icon-gears"></span> <span class="text">PROCESS</span></a></li>
 				<li data-slide="6" class="col-12 col-sm-2"><a id="menu-link-6"
-					ng-click="scrollTo('slide-6')" title="Contact"><span
+					du-smooth-scroll='slide-6' duration=1500 title="Contact"><span
 						class="icon icon-envelope"></span> <span class="text">CONTACT</span></a></li>
+
 				<!--Nav buttons for login and signup -->
 				<!-- <li class="col-12 col-sm-1"><a data-toggle="modal"
-					data-target="#myModal1" id="menu-link-7" href="#/"> <span class="icon icon-user"></span> <span
-						class="text">LOGIN</span></a></li>
-				<li class="col-12 col-sm-1"><a data-toggle="modal"
-					data-target="#myModal" id="menu-link-8" href=""> <span class="icon icon-chevron-down"></span>
-						<span class="text">SIGN UP</span></a></li> -->
+			data-target="#myModal1" id="menu-link-7" href="#/"> <span class="icon icon-user"></span> <span
+				class="text">LOGIN</span></a></li>
+		<li class="col-12 col-sm-1"><a data-toggle="modal"
+			data-target="#myModal" id="menu-link-8" href=""> <span class="icon icon-chevron-down"></span>
+				<span class="text">SIGN UP</span></a></li> -->
 			</ul>
 			<div class="row">
 				<div class="col-sm-2 active-menu"></div>
