@@ -1,4 +1,26 @@
 <script>
+	function generatefromtable() {
+		var data = [], fontSize = 12, height = 0, doc;
+		doc = new jsPDF('p', 'pt', 'a4', true);
+		doc.setFont("helvetica", "normal");
+		doc.setFontSize(fontSize);
+		doc.text(20, 20, "Your Itinerary!");
+		data = [];
+		data = doc.tableToJson('tbl');
+		height = doc.drawTable(data, {
+			xstart : 10,
+			ystart : 10,
+			tablestart : 40,
+			marginleft : 20,
+			xOffset : 10,
+			yOffset : 15
+		});
+		doc.text(80, height + 20, 'Thank You for using Hangout Amigos.');
+		doc.save("Itinerary.pdf");
+	}
+</script>
+
+<script>
 	$(document).ready(function() {
 		$("#fromdatepicker").datepicker();
 		$("#todatepicker").datepicker();
@@ -35,73 +57,161 @@
 						Itinerary!</h4>
 				</div>
 
+				<!-- Hidden table -->
+				<div style="display: none">
+					<table class="table" id="tbl">
+						<tbody>
+							<tr>
+								<td>Destination:</td>
+								<td>{{search}}</td>
+							</tr>
+							<tr>
+								<td>From:</td>
+								<td>{{from}}</td>
+							</tr>
+							<tr>
+								<td>To:</td>
+								<td>{{to}}</td>
+							</tr>
+							<tr ng-show='td1'>
+								<td>Restaurant Name</td>
+								<td>{{resultName[0]}}</td>
+							</tr>
+							<tr ng-show='td2'>
+								<td>Restaurant Name</td>
+								<td>{{resultName[1]}}</td>
+							</tr>
+							<tr ng-show='td3'>
+								<td>Restaurant Name</td>
+								<td>{{resultName[2]}}</td>
+							</tr>
+							<!-- <tr ng-show='td4'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[3]}}</td>
+									</tr>
+									<tr ng-show='td5'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[4]}}</td>
+									</tr>
+									<tr ng-show='td6'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[5]}}</td>
+									</tr> -->
+							<!-- 	</tbody>
+								</table> -->
+							<!-- </div> -->
+							<!-- <h4 align="center">Hangout Place</h4> -->
+							<!-- <div> -->
+							<!-- <table class="table"> -->
+							<!-- <tbody> -->
+							<tr ng-show='td7'>
+								<td>Place Name</td>
+								<td>{{resultPlaceName[0]}}</td>
+							</tr>
+							<tr ng-show='td8'>
+								<td>Place Name</td>
+								<td>{{resultPlaceName[1]}}</td>
+							</tr>
+							<tr ng-show='td9'>
+								<td>Place Name</td>
+								<td>{{resultPlaceName[2]}}</td>
+							</tr>
+							<!-- <tr ng-show='td10'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[3]}}</td>
+									</tr>
+									<tr ng-show='td11'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[4]}}</td>
+									</tr>
+									<tr ng-show='td12'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[5]}}</td>
+									</tr> -->
+						</tbody>
+					</table>
+				</div>
+				<!--  -->
 
 				<div class="modal-body" style="display: block">
 					<div
 						style="border-style: groove; border-width: medium; bordere-color: green">
 						<h3 align="center">{{search}}</h3>
-						<span align="center">From: {{from}} </span>&nbsp; <span align="center">To: {{to}} </span> <br>
+						<span align="center">From: {{from}} </span>&nbsp; <span
+							align="center">To: {{to}} </span> <br>
 						<h4 align="center">Restaurants</h4>
 						<div>
 							<table class="table">
-									<tbody>
-										<tr ng-show='td1'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[0]}}</td>
-										</tr>
-										<tr ng-show='td2'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[1]}}</td>
-										</tr>
-										<tr ng-show='td3'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[2]}}</td>
-										</tr>
-										<tr ng-show='td4'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[3]}}</td>
-										</tr>
-										<tr ng-show='td5'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[4]}}</td>
-										</tr>
-										<tr ng-show='td6'>
-											<td>Restaurant Name</td>
-											<td>{{resultName[5]}}</td>
-										</tr>
-									</tbody>
-								</table>
+								<tbody>
+									<tr>
+										<td>Destination:</td>
+										<td>{{search}}</td>
+									</tr>
+									<tr>
+										<td>From:</td>
+										<td>{{from}}</td>
+									</tr>
+									<tr>
+										<td>To:</td>
+										<td>{{to}}</td>
+									</tr>
+									<tr ng-show='td1'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[0]}}</td>
+									</tr>
+									<tr ng-show='td2'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[1]}}</td>
+									</tr>
+									<tr ng-show='td3'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[2]}}</td>
+									</tr>
+									<tr ng-show='td4'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[3]}}</td>
+									</tr>
+									<tr ng-show='td5'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[4]}}</td>
+									</tr>
+									<tr ng-show='td6'>
+										<td>Restaurant Name</td>
+										<td>{{resultName[5]}}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 						<h4 align="center">Hangout Place</h4>
 						<div>
 							<table class="table">
-									<tbody>
-										<tr ng-show='td7'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[0]}}</td>
-										</tr>
-										<tr ng-show='td8'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[1]}}</td>
-										</tr>
-										<tr ng-show='td9'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[2]}}</td>
-										</tr>
-										<tr ng-show='td10'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[3]}}</td>
-										</tr>
-										<tr ng-show='td11'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[4]}}</td>
-										</tr>
-										<tr ng-show='td12'>
-											<td>Place Name</td>
-											<td>{{resultPlaceName[5]}}</td>
-										</tr>
-									</tbody>
-								</table>
+								<tbody>
+									<tr ng-show='td7'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[0]}}</td>
+									</tr>
+									<tr ng-show='td8'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[1]}}</td>
+									</tr>
+									<tr ng-show='td9'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[2]}}</td>
+									</tr>
+									<tr ng-show='td10'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[3]}}</td>
+									</tr>
+									<tr ng-show='td11'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[4]}}</td>
+									</tr>
+									<tr ng-show='td12'>
+										<td>Place Name</td>
+										<td>{{resultPlaceName[5]}}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -109,7 +219,8 @@
 
 				<div class="modal-footer">
 					<div class="col-sm-10 col-md-12 col-lg-12">
-						<button type="button" class="btn btn-block btn-success">Print</button>
+						<button type="button" class="btn btn-block btn-success"
+							onclick="generatefromtable()">Save as PDF</button>
 						<button type="button" class="btn btn-block btn-danger"
 							data-dismiss="modal">Close</button>
 					</div>
@@ -458,8 +569,7 @@
 		<!-- end of container -->
 		<button data-toggle="modal" data-target="#myModal" id="feed"
 			type="button" class="btn btn-success">
-			<i class="icon-print" style="font-size: 90%;"> Generate
-				Itinerary</i>
+			<i class="icon-print" style="font-size: 90%;"> Generate Itinerary</i>
 		</button>
 
 	</div>
