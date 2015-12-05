@@ -137,7 +137,7 @@ hangoutamigosapp.controller('homeController',function($scope, $http, $location, 
 
 
 //Sign up
-hangoutamigosapp.controller('registerController',function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope) {
+hangoutamigosapp.controller('registerController',function($scope, $http, $location, $q, dataSharing, $timeout, $rootScope,$window) {
 
 	console.log('registerController start');
 
@@ -158,6 +158,12 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 		.success(function(dataFromServer, status,
 				headers, config) {
 			$scope.success = "Thanks for signing up Amigo!"
+				console.log("signup success");
+			console.log(dataFromServer);
+			$window.sessionStorage.userId = dataFromServer.userId;
+			$window.sessionStorage.userEmail = dataFromServer.email;
+			$rootScope.userId = dataFromServer.userId;
+			$rootScope.userEmail = dataFromServer.email;
 				$location.url('/');
 
 		});
@@ -177,7 +183,7 @@ hangoutamigosapp.controller('registerController',function($scope, $http, $locati
 
 //Login
 hangoutamigosapp.controller('loginController', function($scope, $http, $location, $q,
-		dataSharing, $timeout, $rootScope) {
+		dataSharing, $timeout, $rootScope,$window) {
 	console.log('loginController start');
 
 	$scope.loginform_login = function(em1, pass1) {
@@ -195,6 +201,13 @@ hangoutamigosapp.controller('loginController', function($scope, $http, $location
 		.success(function(dataFromServer, status,
 				headers, config) {
 			$scope.success = "Login Successful!"
+				console.log("login success");
+			console.log(dataFromServer);
+			$window.sessionStorage.userId = dataFromServer.userId;
+			$window.sessionStorage.userEmail = dataFromServer.email;
+			$rootScope.userId = dataFromServer.userId;
+			$rootScope.userEmail = dataFromServer.email;
+			$('#myModal1').modal('hide');
 
 		});
 		response.error(function(data, status, headers, config) {
