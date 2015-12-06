@@ -18,6 +18,34 @@
 	$(function() {
 		$(".player").YTPlayer();
 	});
+	function chkPasswordStrength(txtpass,strengthMsg)
+	{
+		 
+	     var desc = new Array();
+	     desc[0] = "Very Weak";
+	     desc[1] = "Weak";
+	     desc[2] = "Better";
+	     desc[3] = "Medium";
+	     desc[4] = "Strong";
+	     desc[5] = "Invalid";
+     
+	     var score   = 0;
+
+	     if (txtpass.length <= 7) score=1;
+		 
+	     if (txtpass.length > 7 && txtpass.length<=10) score=1;
+		 
+		 if (txtpass.length > 10 && txtpass.length<=14) score=3;
+		 
+		 if (txtpass.length >= 15 && txtpass.length<=20) score=4;
+		 
+		 if (txtpass.length > 20) score=5;
+
+	     
+	     strengthMsg.innerHTML = desc[score];
+		 
+	     strengthMsg.className = "strength" + score;
+		     }
 </script>
 
 <div ng-controller="homeController">
@@ -501,10 +529,12 @@
 								</div>
 								<br>
 							</div>
-							<div class="col-sm-10 col-md-12 col-lg-12">
+							  <div class="col-sm-10 col-md-6 col-lg-6">
 								<input type="password" class="form-control" id="userpassword"
-									placeholder="Password" name="signupform_password"
+									placeholder="Password" name="signupform_password" style="width:205px" onkeyup="chkPasswordStrength(this.value,document.getElementById('strength'))"
 									ng-model="signupform_password" required>
+										
+								
 								<div class="error-container"
 									ng-show="signupform.signupform_password.$dirty && signupform.signupform_password.$invalid">
 									<small class="errorbox"
@@ -514,6 +544,14 @@
 								<br>
 
 							</div>
+							
+							<div class="col-sm-10 col-md-6 col-lg-6">
+								<div id="strength" class="strength1" style="height:35px;width:195px;border-radius:10px;padding-top:7px"></div>
+							</div>
+							
+							
+											
+							
 
 							<div class="col-sm-10 col-md-12 col-lg-12">
 								<button type="button" class="btn btn-block btn-success"

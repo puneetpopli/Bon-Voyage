@@ -751,3 +751,71 @@ End test */ */
 #search-slide-2 {
 	background-image: url('../images/back3.jpg');
 } */
+
+
+/*Password Strength*/
+.strength0
+            {
+                width:200px;
+                background:#B20E37;
+				width:200px;
+				height:35px;
+				border:1px;
+                text-align: center;
+                font-weight: bold;
+                
+            }
+
+            .strength1
+            {
+                width:200px;
+                background:#FF0000;
+				width:200px;
+				height:20px;
+				border:1px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .strength2
+            {
+                width:200px;
+                background:#ff5f5f;
+				width:200px;
+				height:20px;
+				border:1px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .strength3
+            {
+                width:200px;
+                background:#FFFF00;
+				width:200px;
+				height:20px;
+				border:1px;
+                 text-align: center;
+                font-weight: bold;
+            }
+
+            .strength4
+            {
+                background:#00FF00;
+                width:200px;
+				height:20px;
+				border:1px;
+                 text-align: center;
+                font-weight: bold;
+            }
+
+            .strength5
+            {
+                background:#FF6600;
+                width:200px;
+				height:20px;
+				border:1px;
+                text-align: center;
+                font-weight: bold;
+            }
+			
