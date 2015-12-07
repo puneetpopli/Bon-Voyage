@@ -9,11 +9,11 @@
 
 # Features of the application
 
-* Google places API
-* Google maps API
-* Password Encryption
+* Google places API.
+* Google maps API.
+* Password Encryption.
 * PDF creation and download for the itinerary.
-* High charts
+* High charts.
  
 # Technology Stack
 
@@ -37,10 +37,10 @@ b) To simply access the backend APIs
 1) mvn clean install
 2) java -jar target demo-0.0.1-SNAPSHOT.jar
 
- -- To get the list of near by restaurants
- 1) http://localhost:8080/hangoutamigos/getplaces/{latitutde}/{longitude}/{radius}/type/{type} 
+
+ i) http://localhost:8080/hangoutamigos/getplaces/{latitutde}/{longitude}/{radius}/type/{type} 
  http://localhost:8080/hangoutamigos/getplaces/47.6062095/-122.3320708/1000/type/restaurant
  
- 2) To get the details of a city
+ ii) To get the details of a city
   http://localhost:8080/hangoutamigos/getplace/textsearch/{query}
    http://localhost:8080/hangoutamigos/getplace/textsearch/seatte
