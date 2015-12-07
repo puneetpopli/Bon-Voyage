@@ -1,14 +1,46 @@
-# CMPE280-HangoutAmigos
+# HangoutAmigos
+
+# Overview of the application
+* A web application powered by RESTful backend which facilitates searching of a restaurants and near by places to hangout in a city.
+* Allowing user to create custom itinerary.
+* Suggesting some of the hot destinations in the USA to hangout.
+* Comparing the popularity of the restaurants based on the rating and displaying the comparison in the form of bar chart using High Charts.
+* Allowing the user to create and download the itinerary.
+
+# Features of the application
+
+* Google places API
+* Google maps API
+* Password Encryption
+* PDF creation and download for the itinerary.
+* High charts
+ 
+# Technology Stack
+
+* Java 8
+* AngularJs
+* MongoDB
+* Maven
+* HTML 5 and Bootstrap
+* JsPDF for PDF creation and downloading.
+
+# Steps to run this web application
+
+a) Front end accessibility
+
+1) mvn spring-boot: run
+2) http://localhost:8080/hangoutamigosapp/index.html
 
 
-Run:
+b) To simply access the backend APIs
 
+1) mvn clean install
+2) java -jar target demo-0.0.1-SNAPSHOT.jar
 
-1. http://localhost:8080/bonvoyage/getplaces/{latitutde}/{longitude}/{radius}
-http://localhost:8080/bonvoyage/getplaces/37.3394444/-121.8938889/500
-
-2. http://localhost:8080/bonvoyage/getrestaurant/restaurant/{latitutde}/{longitude}/{radius}
-http://localhost:8080/bonvoyage/getrestaurant/restaurants/37.3394444/-121.8938889/500
-
-3. http://localhost:8080/bonvoyage/getplaces/{latitutde}/{longitude}/{radius}/type/{type}
-http://localhost:8080/bonvoyage/getplaces/37.3394444/-121.8938889/500/type/lodging
+ -- To get the list of near by restaurants
+ 1) http://localhost:8080/hangoutamigos/getplaces/{latitutde}/{longitude}/{radius}/type/{type} 
+ http://localhost:8080/hangoutamigos/getplaces/47.6062095/-122.3320708/1000/type/restaurant
+ 
+ 2) To get the details of a city
+  http://localhost:8080/hangoutamigos/getplace/textsearch/{query}
+   http://localhost:8080/hangoutamigos/getplace/textsearch/seatte
