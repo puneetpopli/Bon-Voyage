@@ -2,10 +2,10 @@
 
 # Overview of the application
 * A web application powered by RESTful backend which facilitates searching of a restaurants and near by places to hangout in a city.
-* Allowing user to create custom itinerary.
+* Allowing users to create custom itinerary.
 * Suggesting some of the hot destinations in the USA to hangout.
 * Comparing the popularity of the restaurants based on the rating and displaying the comparison in the form of bar chart using High Charts.
-* Allowing the user to create and download the itinerary.
+* Allowing users to create and download the itinerary.
 
 # Features of the application
 
