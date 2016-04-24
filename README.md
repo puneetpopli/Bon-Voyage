@@ -1,4 +1,4 @@
-# HangoutAmigos
+# Bon Voyage
 
 # Overview of the application
 * A web application powered by RESTful backend which facilitates searching of a restaurants and near by places to hangout in a city.
